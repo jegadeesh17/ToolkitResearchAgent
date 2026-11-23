@@ -204,16 +204,16 @@ footer{max-width:1120px;margin:0 auto;padding:28px 24px 56px;color:var(--faint);
       <div class="big num">{{ hv.pass1_correct }}/{{ hv.n }} <small>→</small> {{ hv.pass2_correct }}/{{ hv.n }}</div>
       <p>A person confirmed the correct verdict for {{ hv.n }} apps, one per category, from the vendors' docs.{% if v.compare %} Across all 7 fields of the {{ v.n_labelled or v.n_sample }}-app sample, agreement with independent reference labels moved {{ v.compare.overall.pass1|pct }} → {{ v.compare.overall.pass2|pct }} (n={{ v.compare.n }}).{% endif %}</p>
       {% else %}
-      <div class="mono" style="color:var(--faint)">{{ "Accuracy" if v.labeller_is_human else "Agreement with reference" }}, pass 1 → pass 2</div>
+      <div class="mono" style="color:var(--faint)">{{ "Accuracy" if v.labeller_is_human else "Agreement with reference" }}{{ ", pass 1 → pass 2" if v.compare else ", pass 1" }}</div>
       {% if v.compare %}
       <div class="big num">{{ v.compare.overall.pass1|pct }} <small>→</small> {{ v.compare.overall.pass2|pct }}{% if v.pass2 and v.pass2.overall.get('ci_low') is not none %} <small style="font-size:16px;font-weight:normal">95% CI {{ v.pass2.overall.ci_low|pct }}–{{ v.pass2.overall.ci_high|pct }}</small>{% endif %}</div>
       <p>Field-level {{ "accuracy on a blind, human-labelled" if v.labeller_is_human else "agreement with independent reference labels on a blind" }} sample of {{ v.n_labelled or v.n_sample }} apps (n={{ v.compare.n }} checked fields).</p>
       {% elif v.pass1 %}
-      <div class="big num">{{ v.pass1.overall.accuracy_overall|pct }}</div>
-      <p>Pass-1 field-level accuracy on the blind {{ v.n_labelled or v.n_sample }}-app sample (n={{ v.pass1.overall.n }}).</p>
+      <div class="big num">{{ v.pass1.overall.accuracy_overall|pct }}{% if v.pass1.overall.get('ci_low') is not none %} <small style="font-size:16px;font-weight:normal">95% CI {{ v.pass1.overall.ci_low|pct }}–{{ v.pass1.overall.ci_high|pct }}</small>{% endif %}</div>
+      <p>Pass-1 field-level accuracy on {{ v.n_labelled or v.n_sample }} hand-labelled apps (n={{ v.pass1.overall.n }} checked fields: verdict and auth methods).</p>
       {% else %}
-      <div class="big">Pending</div>
-      <p>Waiting for the reference labels of the {{ v.n_labelled or v.n_sample }}-app sample.</p>
+      <div class="big">Not measured</div>
+      <p>No hand labels were completed within the submission window, so this page reports no accuracy figure.</p>
       {% endif %}
       {% endif %}
       <p class="note">Pass 1 is the agent's first answer; pass 2 is after its verification loops.</p>
@@ -351,13 +351,13 @@ footer{max-width:1120px;margin:0 auto;padding:28px 24px 56px;color:var(--faint);
     <thead><tr><th>Model</th><th class="r">Calls</th><th class="r">Spend</th></tr></thead>
     <tbody>{% for model, g in rs.by_model.items() %}<tr><td>{{ model }}</td><td class="r num">{{ g.llm_calls }}</td><td class="r num">${{ '%.3f'|format(g.cost_usd) }}</td></tr>{% endfor %}</tbody>
   </table>
-  <p class="foot mono">From the append-only run log · reconciled with the provider's own usage figure · includes pilots and retries</p>
+  <p class="foot mono">From the append-only run log · model calls run on the Antigravity CLI plan, so API spend is $0 · includes pilots and retries</p>
 </section>
 
 <section id="verification">
   <h2>How accurate is it?</h2>
   {% if v.labeller_is_human or not v.labeller %}
-  <p class="lede">A person labelled {{ v.n_labelled or v.n_sample }} randomly drawn apps (two or three per category, drawn at random) from the real documentation, before seeing any agent output. The same labels score pass 1 and pass 2. Unknown answers count as wrong.</p>
+  <p class="lede">A person labelled {{ v.n_labelled or v.n_sample }} randomly drawn apps (one per category, from a seeded random sample) from the vendors' own documentation, without looking at this run's answers. Only the verdict and the auth methods were labelled; the other fields are left out of the score.{% if v.pass2 %} The same labels score pass 1 and pass 2.{% endif %} Unknown answers count as wrong.</p>
   {% else %}
   <p class="lede">{{ v.n_labelled or v.n_sample }} randomly drawn apps (two or three per category, drawn at random) were labelled from the vendors' own documentation by an independent AI research agent, {{ v.labeller.replace('agent:', '') }}, a different model family from every model in the pipeline, working in a separate folder with no access to the pipeline or its answers. The numbers below measure agreement with those reference labels, not verified accuracy. The same labels score pass 1 and pass 2; unknown answers count as wrong.</p>
   {% endif %}
@@ -386,7 +386,7 @@ footer{max-width:1120px;margin:0 auto;padding:28px 24px 56px;color:var(--faint);
     {% endfor %}
   </div>
   <div class="legend"><span><i class="dot hit"></i>✓ correct</span><span><i class="dot miss"></i>✗ wrong</span><span><i class="dot abstain"></i>? answered unknown</span></div>
-  <p class="foot mono">Each cell = 1 checked field · {{ v.n_labelled or v.n_sample }} sampled apps × 7 fields{% if v.pass1.n_excluded_truth_unknown %} · {{ v.pass1.n_excluded_truth_unknown }} fields the labeller marked unknown are excluded{% endif %}</p>
+  <p class="foot mono">Each cell = 1 checked field · {{ v.n_labelled or v.n_sample }} labelled apps · {{ v.pass1.overall.n }} checked fields{% if v.pass1.n_excluded_truth_unknown %} · {{ v.pass1.n_excluded_truth_unknown }} fields the labeller marked unknown are excluded{% endif %}</p>
   <table class="kv">
     <thead><tr><th>Field</th><th class="r">Pass 1</th>{% if v.pass2 %}<th class="r">Pass 2</th>{% endif %}<th class="r">When answered (final)</th><th class="r">Abstained (final)</th></tr></thead>
     <tbody>
@@ -415,7 +415,7 @@ footer{max-width:1120px;margin:0 auto;padding:28px 24px 56px;color:var(--faint);
   </table>
   <p class="foot mono">Confidence calibration on the sample · n={{ v.n_labelled or v.n_sample }} apps</p>
   {% else %}
-  <div class="pending">Accuracy is pending: the blind labels for the {{ v.n_labelled or v.n_sample }}-app sample have not been exported yet. Everything else on this page is final.</div>
+  <div class="pending">Accuracy was not measured in this submission: no hand labels were completed within the time window. The checks below (verbatim-quote grounding and Composio's own catalog) are the evidence on offer.</div>
   {% endif %}
   <div class="cards">
     <div class="card">
@@ -541,7 +541,7 @@ pytest -q                     # offline tests, no keys needed</pre>
 <section id="limitations">
   <h2>Limitations and tradeoffs</h2>
   <ul class="limits">
-    {% if v.labeller_is_human or not v.labeller %}<li>Accuracy is measured on {{ v.n_labelled or v.n_sample }} apps ({{ (v.n_labelled or v.n_sample) * 7 }} fields), labelled by one person. It is an estimate with wide error bars, not a guarantee.</li>
+    {% if v.labeller_is_human or not v.labeller %}<li>{% if v.pass1 %}Accuracy is measured on {{ v.n_labelled or v.n_sample }} apps ({{ v.pass1.overall.n }} checked fields: the verdict and the auth methods), labelled by one person in a time-boxed pass; the other five fields were not hand-labelled.{% else %}Accuracy was not measured: no hand labels were completed within the submission window.{% endif %} It is an estimate with wide error bars, not a guarantee.</li>
     {% else %}<li>The reference labels for the {{ v.n_labelled or v.n_sample }}-app sample come from an independent AI agent, not a person, because hand-labelling 140 fields did not fit the time available. Agreement with them is not the same as accuracy{% if v.spot_check %}; a person spot-checked {{ v.spot_check.n }} of their verdicts{% endif %}. The sample is small ({{ (v.n_labelled or v.n_sample) * 7 }} fields), so treat the numbers as estimates with wide error bars.</li>{% endif %}
     <li>Evidence comes from web search and plain page fetches. Documentation that only renders with JavaScript, sits behind a login or lives in PDFs is often missed; those fields show “unknown” with a reason.</li>
     <li>The second model reads the same pages as the first, so a retrieval miss can fool both. Only re-research gathers new evidence, and it is capped at five tool calls per app.</li>

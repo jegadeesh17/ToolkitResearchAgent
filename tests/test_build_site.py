@@ -93,7 +93,7 @@ def test_verdicts_never_colour_only(results):
 
 def test_pending_state_is_honest(results):
     html = render_html(results)
-    assert results["verification"]["status"] == "pending_labels" and "Accuracy is pending" in html
+    assert results["verification"]["status"] == "pending_labels" and "Accuracy was not measured" in html
 
 
 def test_scored_state_shows_n_and_misses(results, rows):
