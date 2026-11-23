@@ -114,6 +114,7 @@ def test_scored_state_shows_n_and_misses(results, rows):
     res = build_results(rows, rows, "pass2", {"pass1": rep, "pass2": rep, "compare": cmp_}, [], splits, None)
     html = render_html(res)
     assert "60% <small>→</small> 71%" in html and "n=140" in html and "Misses in the final answers (1)" in html
+    assert "three per category" in html and "wide error bars" in html
 
 
 def test_main_writes_site_files(tmp_path, rows):

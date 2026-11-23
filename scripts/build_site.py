@@ -188,7 +188,8 @@ def verification_block(scores: dict, pass1: list[dict], final: list[dict], sampl
 
 def build_results(pass1: list[dict], final: list[dict], source: str, scores: dict, log: list[dict],
                   splits: dict, pilot: dict | None, labeller: str | None = None,
-                  catalog: dict | None = None, catalog_split: dict | None = None) -> dict:
+                  catalog: dict | None = None, catalog_split: dict | None = None,
+                  n_pass2_rows: int | None = None) -> dict:
     rows = sorted(final, key=lambda r: r["id"])
     stats = run_stats(log, pass1, rows)
     models = sorted({r["meta"]["model"] for r in rows})
@@ -198,7 +199,7 @@ def build_results(pass1: list[dict], final: list[dict], source: str, scores: dic
                  "total_cost_usd": stats["total_cost_usd"], "calls": stats["llm_calls"] + stats["tool_calls"],
                  "llm_calls": stats["llm_calls"], "tool_calls": stats["tool_calls"], "retries": stats["retries"],
                  "failures": stats["failures"], "seed": splits.get("seed"), "n_sample": len(splits.get("sample", [])),
-                 "run_stats": stats, "pilot": pilot},
+                 "run_stats": stats, "pilot": pilot, "n_pass2_rows": n_pass2_rows},
         "rows": rows,
         "patterns": compute_patterns(rows, catalog_split=catalog_split),
         "verification": verification_block(
@@ -275,7 +276,8 @@ def main(argv: list[str] | None = None) -> int:
     results = build_results(pass1, final, source, scores, log, splits,
                             _load_json(config.RESULTS_DIR / "pilot" / "compare.json"),
                             gt.get("labeller"),
-                            catalog=catalog_agreement, catalog_split=catalog_split)
+                            catalog=catalog_agreement, catalog_split=catalog_split,
+                            n_pass2_rows=len(pass2) if pass2 else None)
     out = Path(args.out_dir)
     out.mkdir(parents=True, exist_ok=True)
     (out / "results.json").write_text(json.dumps(results, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")

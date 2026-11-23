@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-11-23T17:53:01Z",
+  "generated_at": "2026-11-23T18:03:39Z",
   "source": "pass1",
   "models": [
    "gemini-3.8-flash-medium"
@@ -79,7 +79,8 @@
    "pass1_run_id": "20261123T150401Z-6d9a7f",
    "final_run_id": "20261123T150401Z-6d9a7f"
   },
-  "pilot": null
+  "pilot": null,
+  "n_pass2_rows": 19
  },
  "rows": [
   {

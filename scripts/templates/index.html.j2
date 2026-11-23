@@ -329,7 +329,7 @@ footer{max-width:1120px;margin:0 auto;padding:28px 24px 56px;color:var(--faint);
     <ul>
       <li>{% if v.pass1 %}Labelling {{ v.n_labelled or v.n_sample }} apps by hand from the vendors' docs to measure accuracy.{% else %}Labelling a sample by hand to measure accuracy; the form and scoring are built, but no labels were completed for this submission.{% endif %}</li>
       {% if m.source == "pass2" %}<li>{{ v.needs_human|length }} app{{ '' if v.needs_human|length == 1 else 's' }} still flagged “needs human” after pass 2{% if v.needs_human %}: {{ v.needs_human|map(attribute='app')|join(', ') }}{% endif %}.</li>{% endif %}
-      <li>Issuing API keys with the right permissions, reconciling spend with the provider, and approving every push.</li>
+      <li>Issuing API keys with the right permissions and approving every push.</li>
     </ul>
   </div>
   {% set rs = m.run_stats %}
@@ -520,7 +520,7 @@ pytest -q                     # offline tests, no keys needed</pre>
     <li>“Buildable now” means a developer can obtain credentials alone today. It does not check rate limits, terms of service in depth, or approval timelines.</li>
     {% if v.pass1 %}<li>Labels are not fully blind (the labeller had seen earlier agent output for some apps).</li>{% endif %}
     <li>Antigravity CLI quota and latency limit how often the full run can be repeated.</li>
-    {% if m.source != "pass2" %}<li>Pass 2 (second model, judge and targeted re-research) is built and tested, but it did not finish on all 100 apps within the submission window, so the per-app results on this page are from pass 1{% if v.pass2 %}; pass 2 accuracy is reported for the labelled sample only{% endif %}.</li>{% endif %}
+    {% if m.source != "pass2" %}<li>Pass 2 (second model, judge and targeted re-research) is built and tested, but it did not finish on all 100 apps within the submission window{% if m.n_pass2_rows is not none %} (it stopped after {{ m.n_pass2_rows }} apps){% endif %}, so the per-app results on this page are from pass 1{% if v.pass2 %}; pass 2 accuracy is reported for the labelled sample only{% endif %}.</li>{% endif %}
     <li>The catalog check compares with Composio's current catalog, which may list only some of an app's methods.</li>
     <li>There is no browser-based verification loop: checks run on fetched page text, so content that only appears after JavaScript runs can be missed.</li>
     <li>There is no hosted run button, since it would expose API keys and spend credits; the agent runs from the repository with your own keys, as the README shows.</li>
