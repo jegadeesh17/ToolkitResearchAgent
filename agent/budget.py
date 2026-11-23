@@ -6,7 +6,7 @@ from pathlib import Path
 
 from agent.observability import read_log
 
-# $ per 1M tokens (input, output); OpenRouter catalogue 2026-09-24 (docs/reference/README.md).
+# $ per 1M tokens (input, output); OpenRouter catalogue 2026-09-24.
 PRICES_PER_M: dict[str, tuple[float, float]] = {
     "deepseek/deepseek-v4-flash": (0.09, 0.18),
     "openai/gpt-5.6-luna": (0.20, 1.20),

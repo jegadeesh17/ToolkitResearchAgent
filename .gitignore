@@ -36,7 +36,7 @@ docs/PROJECT_STATUS.md
 # Large/raw run artefacts (prompts, responses, evidence bundles)
 results/raw/
 
-# Claude Code: per-user settings stay local; shared settings.json + hooks are committed
+# Claude Code: per-user settings stay local
 .claude/settings.local.json
 
 # Local smoke-test output (not a deliverable)
