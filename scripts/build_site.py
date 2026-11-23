@@ -154,7 +154,7 @@ def run_stats(log: list[dict], pass1_rows: list[dict], final_rows: list[dict]) -
     by_model = summarize(log, by="model")["groups"]
     return {"total_cost_usd": s["total_cost_usd"], "llm_calls": s["llm_calls"], "tool_calls": s["tool_calls"],
             "retries": s["retries"], "failures": s["failures"], "schema_invalid_rate": s["schema_invalid_rate"],
-            "by_stage": s["groups"], "by_model": {m: g for m, g in by_model.items() if m != "(tool)"},
+            "by_stage": s["groups"], "by_model": {m: g for m, g in by_model.items() if m not in ("(tool)", "?")},
             "pass1_run_id": pass1_rows[0]["meta"]["run_id"] if pass1_rows else None,
             "final_run_id": final_rows[0]["meta"]["run_id"] if final_rows else None}
 

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Toolkit Buildability — 100 SaaS apps, researched and verified</title>
-<meta name="description" content="Which of 100 SaaS apps could become an AI-agent toolkit today? Evidence-grounded research agent with verification loops and a blind 20-app accuracy check.">
+<title>Toolkit Buildability — 100 SaaS apps, researched with quoted evidence</title>
+<meta name="description" content="Which of 100 SaaS apps could become an AI-agent toolkit today? Evidence-grounded research agent; every answer quotes the vendor's docs or is marked unknown.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 :root{
   --bg:#fff;--line:rgba(0,0,0,.12);--rule:rgba(0,0,0,.06);--hover:rgba(0,0,0,.03);
   --text:#111;--muted:rgba(0,0,0,.72);--faint:rgba(0,0,0,.60);--ghost:rgba(0,0,0,.18);
-  --now:#047857;--gated:#1d4ed8;--blocked:#be123c;--unknown:rgba(0,0,0,.38);
+  --now:#047857;--gated:#1d4ed8;--blocked:#be123c;--unknown:rgba(0,0,0,.55);
   --accent:#1d4ed8;--hi:#4d7c0f;--yellow:#a16207;--orange:#c2410c;--magenta:#a21caf;--cyan:#0e7490;--indigo:#4338ca;
   --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Consolas,monospace;
@@ -187,7 +187,7 @@ footer{max-width:1120px;margin:0 auto;padding:28px 24px 56px;color:var(--faint);
 <main class="frame">
 
 <section id="result" class="hero">
-  <h1>{{ vc.buildable_now }} of {{ p.n }} apps are ready to build today; {{ vc.buildable_gated }} need outreach first, and {{ vc.blocked }} have no usable public API.</h1>
+  <h1>{{ vc.buildable_now }} of {{ p.n }} apps are ready to build today; {{ vc.buildable_gated }} are gated behind a paid plan, an approval or sales, and {{ vc.blocked }} have no usable public API.</h1>
   {% if p.catalog_split %}<p class="note">{{ p.catalog_split.in_catalog }} of {{ p.n }} already have a Composio toolkit (catalog fetched {{ p.catalog_split.fetched }}); the other {{ p.catalog_split.not_in_catalog }} are where new research is needed.</p>{% endif %}
   <p class="lede">A research agent read each app's own documentation and recorded how an AI agent would authenticate, how a developer gets credentials, and what stands in the way, with a verbatim quote behind every answer. {{ vc.buildable_gated }} more have a public API behind a paid plan, an approval or a sales call; {% if vc.blocked %}{{ vc.blocked }} {{ 'is' if vc.blocked == 1 else 'are' }} blocked{% else %}none is blocked outright{% endif %}{% if vc.unknown %}, and {{ vc.unknown }} could not be settled from the evidence{% endif %}.</p>
   <ul class="findings">
@@ -198,10 +198,10 @@ footer{max-width:1120px;margin:0 auto;padding:28px 24px 56px;color:var(--faint);
   </ul>
   <div class="tiles">
     <div class="tile">
-      <div class="mono" style="color:var(--faint)">{{ "Accuracy" if v.labeller_is_human else "Agreement with reference" }}{{ ", pass 1 → pass 2" if v.compare else ", pass 1" }}</div>
+      <div class="mono" style="color:var(--faint)">Accuracy{{ ", pass 1 → pass 2" if v.compare else ", pass 1" }}</div>
       {% if v.compare %}
       <div class="big num">{{ v.compare.overall.pass1|pct }} <small>→</small> {{ v.compare.overall.pass2|pct }}{% if v.pass2 and v.pass2.overall.get('ci_low') is not none %} <small style="font-size:16px;font-weight:normal">95% CI {{ v.pass2.overall.ci_low|pct }}–{{ v.pass2.overall.ci_high|pct }}</small>{% endif %}</div>
-      <p>Field-level {{ "accuracy on a blind, human-labelled" if v.labeller_is_human else "agreement with independent reference labels on a blind" }} sample of {{ v.n_labelled or v.n_sample }} apps (n={{ v.compare.n }} checked fields).</p>
+      <p>Field-level accuracy on a blind, human-labelled sample of {{ v.n_labelled or v.n_sample }} apps (n={{ v.compare.n }} checked fields).</p>
       {% elif v.pass1 %}
       <div class="big num">{{ v.pass1.overall.accuracy_overall|pct }}{% if v.pass1.overall.get('ci_low') is not none %} <small style="font-size:16px;font-weight:normal">95% CI {{ v.pass1.overall.ci_low|pct }}–{{ v.pass1.overall.ci_high|pct }}</small>{% endif %}</div>
       <p>Pass-1 field-level accuracy on {{ v.n_labelled or v.n_sample }} hand-labelled apps (n={{ v.pass1.overall.n }} checked fields: verdict and auth methods).</p>
@@ -313,7 +313,7 @@ footer{max-width:1120px;margin:0 auto;padding:28px 24px 56px;color:var(--faint);
 
 <section id="agent">
   <h2>How the agent works</h2>
-  <p class="lede">The agent works in two passes. <b>Pass 1</b> (steps 1–5) researches each app once and records its first answers. <b>Pass 2</b> (steps 6–8) re-checks those answers with a second model, a judge and targeted re-research, and records every change. Search and page fetches run through Composio's search toolkit through its Python SDK; model calls run through the Antigravity CLI: Gemini 3.8 Flash for pass 1, GPT-OSS 120B as the second model and Claude Sonnet 4.6 as the judge. Every model call and tool call is logged and budget-capped.</p>
+  <p class="lede">The agent works in two passes. <b>Pass 1</b> (steps 1–5) researches each app once and records its first answers. <b>Pass 2</b> (steps 6–8) re-checks those answers with a second model, a judge and targeted re-research, and records every change. Search and page fetches run through Composio's search toolkit through its Python SDK; model calls run through the Antigravity CLI: Gemini 3.8 Flash for pass 1, GPT-OSS 120B as the second model and Claude Sonnet 4.6 as the judge. Every model call and tool call is logged (the spend cap applies to the OpenRouter backend; Antigravity calls cost $0).</p>
   <ol class="steps">
     <li><b>Search <em class="passtag">Pass 1</em></b><span>Four query templates per app, top three results each.</span></li>
     <li><b>Fetch <em class="passtag">Pass 1</em></b><span>Up to six pages, official domains first, 20,000 characters each, saved as an evidence bundle.</span></li>
@@ -348,7 +348,7 @@ footer{max-width:1120px;margin:0 auto;padding:28px 24px 56px;color:var(--faint);
 
 <section id="verification">
   <h2>How accurate is it?</h2>
-  <p class="lede">A person labelled {{ v.n_labelled or v.n_sample }} randomly drawn apps (one per category, from a seeded random sample) from the vendors' own documentation, without looking at this run's answers. Only the verdict and the auth methods were labelled; the other fields are left out of the score.{% if v.pass2 %} The same labels score pass 1 and pass 2.{% endif %} Unknown answers count as wrong.</p>
+  <p class="lede">{% if v.pass1 %}A person labelled {{ v.n_labelled or v.n_sample }} randomly drawn apps (three per category, from a seeded random sample) from the vendors' own documentation, without looking at this run's answers. Only the verdict and the auth methods were labelled; the other fields are left out of the score.{% if v.pass2 %} The same labels score pass 1 and pass 2.{% endif %} Unknown answers count as wrong.{% else %}A seeded random sample of {{ v.n_sample }} apps (three per category) was drawn for hand labelling, but no labels were completed for this submission, so this section reports no accuracy figure.{% endif %}</p>
   <p class="lede" style="margin-top:-18px">Pass 1 is the agent's first answer; pass 2 is after its verification loops (see <a href="#agent">how the agent works</a>).</p>
   {% if v.pass1 %}
   <div class="acc">
@@ -514,7 +514,7 @@ pytest -q                     # offline tests, no keys needed</pre>
 <section id="limitations">
   <h2>Limitations and tradeoffs</h2>
   <ul class="limits">
-    <li>{% if v.pass1 %}Accuracy is measured on {{ v.n_labelled or v.n_sample }} apps ({{ v.pass1.overall.n }} checked fields: the verdict and the auth methods), labelled by one person in a time-boxed pass; the other five fields were not hand-labelled.{% else %}Accuracy was not measured: no hand labels were completed within the submission window.{% endif %} It is an estimate with wide error bars, not a guarantee.</li>
+    <li>{% if v.pass1 %}Accuracy is measured on {{ v.n_labelled or v.n_sample }} apps ({{ v.pass1.overall.n }} checked fields: the verdict and the auth methods), labelled by one person in a time-boxed pass; the other five fields were not hand-labelled. It is an estimate with wide error bars, not a guarantee.{% else %}Accuracy was not measured: no hand labels were completed within the submission window.{% endif %}</li>
     <li>Evidence comes from web search and plain page fetches. Documentation that only renders with JavaScript, sits behind a login or lives in PDFs is often missed; those fields show “unknown” with a reason.</li>
     <li>The second model reads the same pages as the first, so a retrieval miss can fool both. Only re-research gathers new evidence, and it is capped at five tool calls per app.</li>
     <li>“Buildable now” means a developer can obtain credentials alone today. It does not check rate limits, terms of service in depth, or approval timelines.</li>

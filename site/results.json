@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-11-23T17:15:32Z",
+  "generated_at": "2026-11-23T17:53:01Z",
   "source": "pass1",
   "models": [
    "gemini-3.8-flash-medium"
@@ -74,13 +74,6 @@
      "tool_calls": 0,
      "retries": 0,
      "failures": 0
-    },
-    "?": {
-     "cost_usd": 0.0,
-     "llm_calls": 0,
-     "tool_calls": 0,
-     "retries": 0,
-     "failures": 37
     }
    },
    "pass1_run_id": "20261123T150401Z-6d9a7f",
@@ -8845,101 +8838,13 @@
     ]
    },
    "pass2": {
-    "n": 59,
-    "covers_all": 53,
-    "overlaps": 57,
-    "covers_all_rate": 0.8983,
-    "ci_low": 0.7954,
-    "ci_high": 0.9526,
-    "disagreements": [
-     {
-      "id": 28,
-      "app": "WhatsApp Business",
-      "slug": "whatsapp",
-      "composio": [
-       "api_key",
-       "oauth2"
-      ],
-      "agent": [
-       "other"
-      ],
-      "covers_all": false,
-      "overlaps": false
-     },
-     {
-      "id": 32,
-      "app": "Meta Ads",
-      "slug": "metaads",
-      "composio": [
-       "api_key",
-       "oauth2"
-      ],
-      "agent": [
-       "oauth2"
-      ],
-      "covers_all": false,
-      "overlaps": true
-     },
-     {
-      "id": 62,
-      "app": "Vercel",
-      "slug": "vercel",
-      "composio": [
-       "api_key",
-       "oauth2"
-      ],
-      "agent": [
-       "api_key"
-      ],
-      "covers_all": false,
-      "overlaps": true
-     },
-     {
-      "id": 66,
-      "app": "Neo4j",
-      "slug": "neo4j",
-      "composio": [
-       "api_key",
-       "basic",
-       "oauth2"
-      ],
-      "agent": [
-       "oauth2",
-       "basic",
-       "bearer_token"
-      ],
-      "covers_all": false,
-      "overlaps": true
-     },
-     {
-      "id": 69,
-      "app": "Datadog",
-      "slug": "datadog",
-      "composio": [
-       "api_key",
-       "bearer_token",
-       "oauth2"
-      ],
-      "agent": [
-       "api_key"
-      ],
-      "covers_all": false,
-      "overlaps": true
-     },
-     {
-      "id": 99,
-      "app": "YouTube Transcript",
-      "slug": "youtube_transcript",
-      "composio": [
-       "api_key"
-      ],
-      "agent": [
-       "none"
-      ],
-      "covers_all": false,
-      "overlaps": false
-     }
-    ]
+    "n": 13,
+    "covers_all": 13,
+    "overlaps": 13,
+    "covers_all_rate": 1.0,
+    "ci_low": 0.7719,
+    "ci_high": 1.0,
+    "disagreements": []
    },
    "catalog_meta": {
     "source_url": "https://raw.githubusercontent.com/ComposioHQ/composio/main/docs/public/data/toolkits.json",
@@ -8950,8 +8855,6 @@
   },
   "labeller": null,
   "labeller_is_human": false,
-  "spot_check": null,
-  "human_verified": null,
   "pass1": null,
   "pass2": null,
   "compare": null,
