@@ -20,7 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Auth-method definitions follow Composio's own wording.
 - The report leads with outreach tiers: ready to build, needs outreach, blocked.
 - The report uses a light theme.
-- The report shows no accuracy figure until hand labels exist, and says pass 2 stopped after 19 apps.
+- The report shows no accuracy figure until hand labels exist, and states how many apps pass 2 covered.
 - `S2S_OAUTH2` catalog schemes count as OAuth 2.0.
 
 ### Removed

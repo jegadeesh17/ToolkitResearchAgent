@@ -46,7 +46,7 @@ data/apps.json (100 apps, 10 categories)
 
 - **Grounded Evidence or `unknown`:** Every answered field contains `{url, quote}`. Quotes must be verbatim substrings of the cited page. If no documentation confirms an answer, it is recorded as `unknown` with a specific diagnostic reason.
 - **No API spend:** model calls run through the Antigravity CLI (`agy`) on the owner's plan, so LLM cost is recorded as $0. Three model families are used: `gemini-3.8-flash-medium` (pass 1), `gpt-oss-120b-medium` (second model) and `claude-sonnet-4-6` (judge).
-- **Retrieval:** documentation is found and fetched with Composio's search and fetch tools (web search first, its DuckDuckGo search if that returns nothing). If `TAVILY_API_KEY` is set, Tavily search and extract replace the Composio tools, falling back to DuckDuckGo on a search error. The published run used Composio only.
+- **Retrieval:** documentation is found and fetched with Composio's search and fetch tools (web search first, its DuckDuckGo search if that returns nothing). If `TAVILY_API_KEY` is set, Tavily search and extract replace the Composio tools, falling back to DuckDuckGo on a search error and to a plain HTTP fetch on an extract error. The published run used Composio only (every tool call in `results/runs/run_log.jsonl` is a Composio slug).
 - **Auditable Observability:** Every search, page fetch, LLM inference, retry, latency, and status is logged to `results/runs/run_log.jsonl`.
 
 ---
@@ -114,7 +114,7 @@ Settings are managed via environment variables or `.env` (`.env` is strictly git
 | `COMPOSIO_API_KEY` | *(required)* | placeholder | Project API key for Composio search and fetch |
 | `TAVILY_API_KEY` | *(optional)* | empty | When set, Tavily search and extract replace the Composio tools |
 | `OPENROUTER_API_KEY` | *(required for `openrouter`)* | commented out | Only needed when `LLM_BACKEND=openrouter` |
-| `BUDGET_CAP_USD` | `4.00` | `4.00` | Spending cap (exit code 4). Enforced on the OpenRouter backend; Antigravity calls are recorded as $0, so it never triggers there |
+| `BUDGET_CAP_USD` | `4.00` | `4.00` | Spending cap (exit code 4). Counts spend already in the run log plus new calls; Antigravity calls add $0, so in practice it only limits the OpenRouter backend |
 
 ---
 
