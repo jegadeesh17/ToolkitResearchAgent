@@ -1,12 +1,12 @@
 # Toolkit Research Agent
 
-Which of 100 SaaS apps could become an AI-agent toolkit today? This repository implements an autonomous research agent that analyzes each app's official developer documentation, extracts authentication schemes, developer onboarding pathways, API breadths, and build blockers — with verbatim quote citations for every answer — verifies predictions across multi-model consensus and bounded re-research loops, and cross-checks accuracy against hand-checked human ground truth with Wilson confidence intervals, as well as Composio's real-world catalog of 1,519+ toolkits.
+Which of 100 SaaS apps could become an AI-agent toolkit today? This repository implements an autonomous research agent that analyzes each app's official developer documentation, extracts authentication schemes, developer onboarding pathways, API breadths, and build blockers — with a verbatim quote citation for every answer — and checks its auth answers against Composio's own catalog of 1,519 toolkits (snapshot 2026-11-23), with Wilson confidence intervals. It also includes a second verification pass (second model, judge, bounded re-research) and a hand-labelling and scoring kit for measuring accuracy.
 
 Builds on my September 2026 attempt at this brief ([ToolkitBuildabilityResearch](https://github.com/jegadeesh17/ToolkitBuildabilityResearch)); this version adds stricter evidence rules, a check against Composio's own catalog and Wilson confidence intervals.
 
 **Results in this submission:** pass 1 covers all 100 apps. Pass 2 (second model, judge, re-research) is built and tested but was stopped after 19 apps to meet the deadline, so the published results are pass 1. Accuracy against hand labels was not measured: the labelling form and scoring code are included (`verification/label.html`, `agent/score.py`), but no labels were completed in time.
 
-The full findings are published as a standalone interactive case study in `site/index.html` and reproducible data in `site/results.json`.
+The full findings are published as a standalone interactive case study in `site/index.html` and reproducible data in `site/results.json`, live at **https://jegadeesh17.github.io/ToolkitResearchAgent/**.
 
 ---
 
@@ -21,7 +21,7 @@ data/apps.json (100 apps, 10 categories)
   │    → schema validation + repair loops → consistency rules → quote grounding
   │    → results/pass1.json
   │
-  ├─ PASS 2  agent/verify.py
+  ├─ PASS 2  agent/verify.py   (stopped after 19 apps in this submission)
   │    L1 Deterministic quote grounding
   │    L2 Cross-model extraction via Antigravity CLI (gpt-oss-120b-medium)
   │    L3 Adjudication judge for disputed fields (claude-sonnet-4-6)
@@ -29,14 +29,15 @@ data/apps.json (100 apps, 10 categories)
   │    → results/pass2.json (all changes audited in pass2_diff)
   │
   ├─ CATALOG CHECK  scripts/composio_catalog.py
-  │    Fetch Composio's live 1,519-toolkit catalog from GitHub
+  │    Fetch Composio's 1,519-toolkit catalog from GitHub (snapshot 2026-11-23)
   │    Compare predicted auth schemes against Composio's supported schemes
+  │    (pass 2 is scored only on the apps it covers)
   │    → verification/catalog_agreement.json
   │
-  ├─ SCORING  agent/score.py
-  │    Score Pass 1 & Pass 2 against verification/ground_truth.json (human hand-labels)
+  ├─ SCORING  agent/score.py   (needs hand labels; none in this submission)
+  │    Score Pass 1 & Pass 2 against verification/ground_truth.json (hand labels)
   │    Compute field-level accuracies and Wilson 95% binomial confidence intervals
-  │    → verification/score_report_pass1.json, score_report_pass2.json, compare.json
+  │    → verification/compare.json
   │
   └─ REPORT  scripts/build_site.py → site/index.html + site/results.json
 ```
@@ -45,7 +46,7 @@ data/apps.json (100 apps, 10 categories)
 
 - **Grounded Evidence or `unknown`:** Every answered field contains `{url, quote}`. Quotes must be verbatim substrings of the cited page. If no documentation confirms an answer, it is recorded as `unknown` with a specific diagnostic reason.
 - **No API spend:** model calls run through the Antigravity CLI (`agy`) on the owner's plan, so LLM cost is recorded as $0. Three model families are used: `gemini-3.8-flash-medium` (pass 1), `gpt-oss-120b-medium` (second model) and `claude-sonnet-4-6` (judge).
-- **Resilient Tooling:** Automated developer doc retrieval uses Composio search with automated fallback to direct Tavily search/extract and DuckDuckGo.
+- **Retrieval:** documentation is found and fetched with Composio's search and fetch tools (web search first, its DuckDuckGo search if that returns nothing). If `TAVILY_API_KEY` is set, Tavily search and extract replace the Composio tools, falling back to DuckDuckGo on a search error. The published run used Composio only.
 - **Auditable Observability:** Every search, page fetch, LLM inference, retry, latency, and status is logged to `results/runs/run_log.jsonl`.
 
 ---
@@ -64,19 +65,13 @@ data/apps.json (100 apps, 10 categories)
 git clone https://github.com/jegadeesh17/ToolkitResearchAgent.git
 cd ToolkitResearchAgent
 python -m venv .venv
-.venv\Scripts\activate            # Windows  (source .venv/bin/activate on Unix)
+source .venv/Scripts/activate     # Git Bash on Windows; .venv\Scripts\activate in PowerShell/cmd; source .venv/bin/activate on Unix
 pip install -r requirements.txt
 
 # Run offline unit test suite (no API keys required)
 pytest -q
 
-# Set environment variables
-export LLM_BACKEND=agy
-export PASS1_MODEL=gemini-3.8-flash-medium
-export VERIFY_MODEL=gpt-oss-120b-medium
-export JUDGE_MODEL=claude-sonnet-4-6
-
-# Configure keys
+# Configure backend, models and keys (.env.example already sets LLM_BACKEND=agy and the three models)
 cp .env.example .env              # Add COMPOSIO_API_KEY (and optional TAVILY_API_KEY)
 ```
 
@@ -89,13 +84,14 @@ python -m agent.validate results/pass1.json --expect 100
 
 # 2. Pass 2: Verification, cross-model consensus, and judge adjudication
 python -m agent.verify --concurrency 4
-python -m agent.validate results/pass2.json --expect 100
+python -m agent.validate results/pass2.json --expect 100   # this submission's pass2.json has 19 rows: use --expect 19
 
 # 3. Check consistency against Composio's real catalog
-python scripts/composio_catalog.py --fetch
+python scripts/composio_catalog.py --fetch    # download the catalog snapshot
+python scripts/composio_catalog.py --build    # rebuild data/composio_catalog.json from it
 python scripts/composio_catalog.py --check results/pass1.json results/pass2.json
 
-# 4. Score against hand-labeled human ground truth
+# 4. Score against hand labels (requires verification/ground_truth.json, not included; exits 3 without it)
 python -m agent.score --compare results/pass1.json results/pass2.json
 
 # 5. Build static case-study site
@@ -109,15 +105,16 @@ python -m playwright install chromium && python scripts/qa_site.py
 
 Settings are managed via environment variables or `.env` (`.env` is strictly gitignored):
 
-| Variable | Default | Purpose |
-|---|---|---|
-| `LLM_BACKEND` | `agy` | LLM execution engine (`agy` for Antigravity CLI, `openrouter` for API) |
-| `PASS1_MODEL` | `gemini-3.8-flash-medium` | First-pass research model |
-| `VERIFY_MODEL` | `gpt-oss-120b-medium` | Second-pass cross-model verification model |
-| `JUDGE_MODEL` | `claude-sonnet-4-6` | Adjudication judge for disputed fields |
-| `COMPOSIO_API_KEY` | *(Required)* | Project API key for Composio developer tools |
-| `TAVILY_API_KEY` | *(Optional)* | Direct Tavily API key for search/extract fallback |
-| `BUDGET_CAP_USD` | `4.00` | Safety spending cap guardrail |
+| Variable | Default in code | In `.env.example` | Purpose |
+|---|---|---|---|
+| `LLM_BACKEND` | `openrouter` | `agy` | LLM execution engine (`agy` for Antigravity CLI, `openrouter` for the HTTP API) |
+| `PASS1_MODEL` | *(required)* | `gemini-3.8-flash-medium` | First-pass research model |
+| `VERIFY_MODEL` | *(empty)* | `gpt-oss-120b-medium` | Second-pass cross-model verification model |
+| `JUDGE_MODEL` | *(empty)* | `claude-sonnet-4-6` | Adjudication judge for disputed fields |
+| `COMPOSIO_API_KEY` | *(required)* | placeholder | Project API key for Composio search and fetch |
+| `TAVILY_API_KEY` | *(optional)* | empty | When set, Tavily search and extract replace the Composio tools |
+| `OPENROUTER_API_KEY` | *(required for `openrouter`)* | commented out | Only needed when `LLM_BACKEND=openrouter` |
+| `BUDGET_CAP_USD` | `4.00` | `4.00` | Spending cap (exit code 4). Enforced on the OpenRouter backend; Antigravity calls are recorded as $0, so it never triggers there |
 
 ---
 
