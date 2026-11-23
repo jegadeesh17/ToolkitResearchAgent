@@ -46,7 +46,7 @@ data/apps.json (100 apps, 10 categories)
 
 - **Grounded Evidence or `unknown`:** Every answered field contains `{url, quote}`. Quotes must be verbatim substrings of the cited page. If no documentation confirms an answer, it is recorded as `unknown` with a specific diagnostic reason.
 - **No API spend:** model calls run through the Antigravity CLI (`agy`) on the owner's plan, so LLM cost is recorded as $0. Three model families are used: `gemini-3.8-flash-medium` (pass 1), `gpt-oss-120b-medium` (second model) and `claude-sonnet-4-6` (judge).
-- **Retrieval:** documentation is found and fetched with Composio's search and fetch tools (web search first, its DuckDuckGo search if that returns nothing). If `TAVILY_API_KEY` is set, Tavily search and extract replace the Composio tools, falling back to DuckDuckGo on a search error and to a plain HTTP fetch on an extract error. The published run used Composio only (every tool call in `results/runs/run_log.jsonl` is a Composio slug).
+- **Retrieval:** documentation is found and fetched with Composio's search and fetch tools (web search first, its DuckDuckGo search if that returns nothing). If `TAVILY_API_KEY` is set, Tavily search and extract replace the Composio tools, falling back to DuckDuckGo on a search error and to a plain HTTP fetch on an extract error.
 - **Auditable Observability:** Every search, page fetch, LLM inference, retry, latency, and status is logged to `results/runs/run_log.jsonl`.
 
 ---
