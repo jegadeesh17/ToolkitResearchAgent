@@ -10,15 +10,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#000;--line:rgba(255,255,255,.10);--rule:rgba(255,255,255,.06);--hover:rgba(255,255,255,.03);
-  --text:#fff;--muted:rgba(255,255,255,.70);--faint:rgba(255,255,255,.60);--ghost:rgba(255,255,255,.14);
-  --now:#34d399;--gated:#60a5fa;--blocked:#fb7185;--unknown:rgba(255,255,255,.34);
-  --accent:#51a2ff;--hi:#d4ff4a;--yellow:#facc15;--orange:#fb923c;--magenta:#e879f9;--cyan:#22d3ee;--indigo:#818cf8;
+  --bg:#fff;--line:rgba(0,0,0,.12);--rule:rgba(0,0,0,.06);--hover:rgba(0,0,0,.03);
+  --text:#111;--muted:rgba(0,0,0,.72);--faint:rgba(0,0,0,.60);--ghost:rgba(0,0,0,.18);
+  --now:#047857;--gated:#1d4ed8;--blocked:#be123c;--unknown:rgba(0,0,0,.38);
+  --accent:#1d4ed8;--hi:#4d7c0f;--yellow:#a16207;--orange:#c2410c;--magenta:#a21caf;--cyan:#0e7490;--indigo:#4338ca;
   --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Consolas,monospace;
 }
 *{box-sizing:border-box}
-html{background:var(--bg);color-scheme:dark}
+html{background:var(--bg);color-scheme:light}
 body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.6 var(--sans);letter-spacing:-.011em;
   -webkit-font-smoothing:antialiased}
 a{color:var(--text);text-decoration:underline;text-decoration-color:var(--ghost);text-underline-offset:3px}
@@ -27,7 +27,7 @@ a:hover{text-decoration-color:var(--text)}
 .mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-variant-numeric:tabular-nums}
 .num{font-variant-numeric:tabular-nums}
 .frame{max-width:1120px;margin:0 auto;border-left:1px solid var(--line);border-right:1px solid var(--line)}
-.top{position:sticky;top:0;z-index:5;background:rgba(0,0,0,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
 .top .frame{display:flex;align-items:center;gap:20px;padding:14px 24px;flex-wrap:wrap}
 .brand{font-weight:500;font-size:15px;letter-spacing:-.01em;text-decoration:none}
 .tag{border:1px solid var(--now);color:var(--now);border-radius:2px;padding:1px 6px;font-size:10px}
@@ -116,12 +116,12 @@ details.list table{margin-top:10px}
 .filters .group{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .filters .group > .glabel{color:var(--faint);width:84px}
 .chip{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:2px;padding:3px 8px;font:inherit;font-size:13px;cursor:pointer}
-.chip[aria-pressed="true"]{background:#fff;color:#000;border-color:#fff}
+.chip[aria-pressed="true"]{background:#111;color:#fff;border-color:#111}
 .nojs-note{color:var(--faint);font-size:13px}
 .js .nojs-note{display:none}
 .filters{display:none}.js .filters{display:flex}
 table.apps{width:100%;border-collapse:collapse;font-size:14px}
-table.apps thead th{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);position:sticky;top:57px;background:#000}
+table.apps thead th{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);position:sticky;top:57px;background:var(--bg)}
 table.apps td{padding:10px 8px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--muted)}
 table.apps tr.app-row{cursor:pointer}
 table.apps tr.app-row:hover td{background:var(--hover)}
@@ -131,7 +131,7 @@ table.apps td.name small{display:block;color:var(--faint);font-weight:400}
 .conf{display:flex;gap:2px}.conf i{width:6px;height:12px;background:var(--ghost);border-radius:1px}.conf i.on{background:var(--accent)}
 .js tr.detail{display:none}
 tr.detail.open{display:table-row}
-tr.detail td{background:rgba(255,255,255,.02);padding:18px 16px 22px}
+tr.detail td{background:rgba(0,0,0,.025);padding:18px 16px 22px}
 .ev{display:grid;grid-template-columns:130px 1fr;gap:6px 16px;font-size:14px}
 .ev dt{color:var(--faint)}
 .ev dd{margin:0;color:var(--muted)}
@@ -142,9 +142,9 @@ tr.detail td{background:rgba(255,255,255,.02);padding:18px 16px 22px}
 .diff b{color:var(--text);font-weight:500}
 .hidden{display:none!important}
 /* proof + limits */
-pre{background:#0a0a0a;border:1px solid var(--line);border-radius:2px;padding:14px 16px;overflow-x:auto;font:13px/1.6 var(--mono);color:#e5e5e5}
+pre{background:#f5f5f4;border:1px solid var(--line);border-radius:2px;padding:14px 16px;overflow-x:auto;font:13px/1.6 var(--mono);color:#1c1917}
 .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.btn{display:inline-block;background:#fff;color:#000;text-decoration:none;border-radius:2px;padding:8px 12px;font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.btn{display:inline-block;background:#111;color:#fff;text-decoration:none;border-radius:2px;padding:8px 12px;font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
 .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
 ul.limits{max-width:76ch;color:var(--muted);padding-left:18px}
 ul.limits li{margin-bottom:8px}
