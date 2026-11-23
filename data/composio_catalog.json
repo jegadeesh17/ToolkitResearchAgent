@@ -1,0 +1,746 @@
+[
+  {
+    "id": 1,
+    "app": "Salesforce",
+    "slug": "salesforce",
+    "authSchemes": [
+      "OAUTH2",
+      "S2S_OAUTH2"
+    ]
+  },
+  {
+    "id": 2,
+    "app": "HubSpot",
+    "slug": "hubspot",
+    "authSchemes": [
+      "OAUTH2",
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 3,
+    "app": "Pipedrive",
+    "slug": "pipedrive",
+    "authSchemes": [
+      "OAUTH2",
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 4,
+    "app": "Attio",
+    "slug": "attio",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 5,
+    "app": "Twenty",
+    "slug": "twenty",
+    "authSchemes": [
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 6,
+    "app": "Podio",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 7,
+    "app": "Zoho CRM",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 8,
+    "app": "Close",
+    "slug": "close",
+    "authSchemes": [
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 9,
+    "app": "Copper",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 10,
+    "app": "DealCloud",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 11,
+    "app": "Zendesk",
+    "slug": "zendesk",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 12,
+    "app": "Intercom",
+    "slug": "intercom",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 13,
+    "app": "Freshdesk",
+    "slug": "freshdesk",
+    "authSchemes": [
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 14,
+    "app": "Front",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 15,
+    "app": "Pylon",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 16,
+    "app": "LiveAgent",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 17,
+    "app": "Plain",
+    "slug": "plain",
+    "authSchemes": [
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 18,
+    "app": "Help Scout",
+    "slug": "help_scout",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 19,
+    "app": "Gorgias",
+    "slug": "gorgias",
+    "authSchemes": [
+      "API_KEY",
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 20,
+    "app": "Gladly",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 21,
+    "app": "Slack",
+    "slug": "slack",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 22,
+    "app": "Twilio",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 23,
+    "app": "Zoho Cliq",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 24,
+    "app": "Lark (Larksuite)",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 25,
+    "app": "Pumble",
+    "slug": "pumble",
+    "authSchemes": [
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 26,
+    "app": "Discord",
+    "slug": "discord",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 27,
+    "app": "Telegram",
+    "slug": "telegram",
+    "authSchemes": [
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 28,
+    "app": "WhatsApp Business",
+    "slug": "whatsapp",
+    "authSchemes": [
+      "OAUTH2",
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 29,
+    "app": "Aircall",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 30,
+    "app": "Vonage",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 31,
+    "app": "Google Ads",
+    "slug": "googleads",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 32,
+    "app": "Meta Ads",
+    "slug": "metaads",
+    "authSchemes": [
+      "OAUTH2",
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 33,
+    "app": "LinkedIn Ads",
+    "slug": "linkedin_ads",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 34,
+    "app": "GoHighLevel",
+    "slug": "highlevel",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 35,
+    "app": "Mailchimp",
+    "slug": "mailchimp",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 36,
+    "app": "Klaviyo",
+    "slug": "klaviyo",
+    "authSchemes": [
+      "API_KEY",
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 37,
+    "app": "systeme.io",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 38,
+    "app": "Pinterest",
+    "slug": "pinterest",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 39,
+    "app": "Threads (Meta)",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 40,
+    "app": "SendGrid",
+    "slug": "sendgrid",
+    "authSchemes": [
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 41,
+    "app": "Shopify",
+    "slug": "shopify",
+    "authSchemes": [
+      "API_KEY",
+      "OAUTH2",
+      "S2S_OAUTH2"
+    ]
+  },
+  {
+    "id": 42,
+    "app": "WooCommerce",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 43,
+    "app": "BigCommerce",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 44,
+    "app": "Salesforce Commerce Cloud",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 45,
+    "app": "Magento (Adobe Commerce)",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 46,
+    "app": "Squarespace",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 47,
+    "app": "Ecwid",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 48,
+    "app": "Gumroad",
+    "slug": "gumroad",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 49,
+    "app": "Amazon Selling Partner",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 50,
+    "app": "fanbasis",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 51,
+    "app": "DataForSEO",
+    "slug": "dataforseo",
+    "authSchemes": [
+      "BASIC"
+    ]
+  },
+  {
+    "id": 52,
+    "app": "SE Ranking",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 53,
+    "app": "Ahrefs",
+    "slug": "ahrefs",
+    "authSchemes": [
+      "API_KEY",
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 54,
+    "app": "MrScraper",
+    "slug": "mrscraper",
+    "authSchemes": [
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 55,
+    "app": "Apify",
+    "slug": "apify",
+    "authSchemes": [
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 56,
+    "app": "Firecrawl",
+    "slug": "firecrawl",
+    "authSchemes": [
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 57,
+    "app": "Bright Data",
+    "slug": "brightdata",
+    "authSchemes": [
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 58,
+    "app": "Sherlock",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 59,
+    "app": "Waterfall.io",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 60,
+    "app": "Clay",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 61,
+    "app": "GitHub",
+    "slug": "github",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 62,
+    "app": "Vercel",
+    "slug": "vercel",
+    "authSchemes": [
+      "OAUTH2",
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 63,
+    "app": "Netlify",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 64,
+    "app": "Cloudflare",
+    "slug": "cloudflare",
+    "authSchemes": [
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 65,
+    "app": "Supabase",
+    "slug": "supabase",
+    "authSchemes": [
+      "OAUTH2",
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 66,
+    "app": "Neo4j",
+    "slug": "neo4j",
+    "authSchemes": [
+      "OAUTH2",
+      "BASIC",
+      "API_KEY",
+      "S2S_OAUTH2"
+    ]
+  },
+  {
+    "id": 67,
+    "app": "Snowflake",
+    "slug": "snowflake",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 68,
+    "app": "MongoDB Atlas",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 69,
+    "app": "Datadog",
+    "slug": "datadog",
+    "authSchemes": [
+      "OAUTH2",
+      "API_KEY",
+      "BEARER_TOKEN"
+    ]
+  },
+  {
+    "id": 70,
+    "app": "Sentry",
+    "slug": "sentry",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 71,
+    "app": "Notion",
+    "slug": "notion",
+    "authSchemes": [
+      "OAUTH2",
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 72,
+    "app": "Airtable",
+    "slug": "airtable",
+    "authSchemes": [
+      "OAUTH2",
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 73,
+    "app": "Linear",
+    "slug": "linear",
+    "authSchemes": [
+      "OAUTH2",
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 74,
+    "app": "Jira",
+    "slug": "jira",
+    "authSchemes": [
+      "OAUTH2",
+      "S2S_OAUTH2",
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 75,
+    "app": "Asana",
+    "slug": "asana",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 76,
+    "app": "Monday.com",
+    "slug": "monday",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 77,
+    "app": "ClickUp",
+    "slug": "clickup",
+    "authSchemes": [
+      "OAUTH2",
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 78,
+    "app": "Coda",
+    "slug": "coda",
+    "authSchemes": [
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 79,
+    "app": "Smartsheet",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 80,
+    "app": "Harvest",
+    "slug": "harvest",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 81,
+    "app": "Stripe",
+    "slug": "stripe",
+    "authSchemes": [
+      "API_KEY",
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 82,
+    "app": "Plaid",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 83,
+    "app": "Binance",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 84,
+    "app": "Paygent Connect",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 85,
+    "app": "iPayX",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 86,
+    "app": "QuickBooks",
+    "slug": "quickbooks",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 87,
+    "app": "Xero",
+    "slug": "xero",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 88,
+    "app": "Brex",
+    "slug": "brex",
+    "authSchemes": [
+      "OAUTH2",
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 89,
+    "app": "Ramp",
+    "slug": "ramp",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 90,
+    "app": "PitchBook",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 91,
+    "app": "NotebookLM",
+    "slug": "notebook_lm",
+    "authSchemes": [
+      "OAUTH2"
+    ]
+  },
+  {
+    "id": 92,
+    "app": "Otter AI",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 93,
+    "app": "Fathom",
+    "slug": "fathom",
+    "authSchemes": [
+      "OAUTH2",
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 94,
+    "app": "Consensus",
+    "slug": "consensus",
+    "authSchemes": [
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 95,
+    "app": "Reducto",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 96,
+    "app": "Devin",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 97,
+    "app": "higgsfield",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 98,
+    "app": "Mermaid CLI",
+    "slug": null,
+    "authSchemes": []
+  },
+  {
+    "id": 99,
+    "app": "YouTube Transcript",
+    "slug": "youtube_transcript",
+    "authSchemes": [
+      "API_KEY"
+    ]
+  },
+  {
+    "id": 100,
+    "app": "Grain",
+    "slug": null,
+    "authSchemes": []
+  }
+]
