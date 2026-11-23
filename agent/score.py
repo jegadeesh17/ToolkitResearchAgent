@@ -75,7 +75,7 @@ def _metrics(items: list[dict]) -> dict:
 
 
 SCHEME_MAP = {"OAUTH2": "oauth2", "API_KEY": "api_key", "BEARER_TOKEN": "bearer_token", "BASIC": "basic",
-              "NO_AUTH": "none"}
+              "NO_AUTH": "none", "S2S_OAUTH2": "oauth2"}
 
 
 def catalog_agreement(rows: list[AppResult], catalog: list[dict]) -> dict:
