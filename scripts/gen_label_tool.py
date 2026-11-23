@@ -1,4 +1,4 @@
-"""Generate verification/label.html: an offline form for blind-labelling the 20 sample apps.
+"""Generate verification/label.html: an offline form for blind-labelling the hand-label sample apps.
 
 The page embeds only seed data (id, name, category, hint) and the schema's enums. It never
 contains agent output, so the human labels without anchoring on what the agent said.
@@ -70,12 +70,12 @@ _PAGE = Template("""<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blind labelling - 20-app sample</title>
+<title>Blind labelling - hand-label sample</title>
 <style>$css</style>
 </head>
 <body>
 <header>
-  <h1>Blind labelling &middot; 20-app sample</h1>
+  <h1>Blind labelling &middot; hand-label sample</h1>
   <p class="lede">Label each app from its <strong>real documentation only</strong>. Do not look at any agent
   output until you have exported. Pick <code>unknown</code> when the docs don't settle a field.
   Your work autosaves in this browser.</p>

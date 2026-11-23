@@ -219,7 +219,9 @@ def check_agreement(
     p2_rows = load_results(pass2_path)
 
     res1 = catalog_agreement(p1_rows, catalog)
-    res2 = catalog_agreement(p2_rows, catalog)
+    # Pass 2 covers only a subset of the apps; score it on the catalog entries it contains.
+    ids2 = {r.id for r in p2_rows}
+    res2 = catalog_agreement(p2_rows, [c for c in catalog if c.get("id") in ids2])
 
     report = {
         "pass1": res1,

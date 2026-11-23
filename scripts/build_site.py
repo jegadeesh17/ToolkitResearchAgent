@@ -134,26 +134,6 @@ def _takeaways(n, auth, access, mcp, ranking, by_category, easy, outreach, rows)
             "wins": wins_s}
 
 
-def human_verified(spot: dict | None, pass1: list[dict], final: list[dict]) -> dict | None:
-    """Agent verdicts vs verdicts a person confirmed by hand (spot check); 'can't tell' items are excluded."""
-    if not spot:
-        return None
-    p1 = {r["id"]: r["verdict"] for r in pass1}
-    p2 = {r["id"]: r["verdict"] for r in final}
-    items = []
-    for c in spot.get("checks") or []:
-        if c.get("judgement") not in ("correct", "wrong") or "id" not in c or not c.get("reference_verdict"):
-            continue
-        truth = c.get("corrected_verdict") or c["reference_verdict"]
-        items.append({"id": c["id"], "app": c["app"], "category": c.get("category"), "truth": truth,
-                      "pass1": p1.get(c["id"]), "pass2": p2.get(c["id"]),
-                      "ok1": p1.get(c["id"]) == truth, "ok2": p2.get(c["id"]) == truth})
-    if not items:
-        return None
-    return {"n": len(items), "pass1_correct": sum(i["ok1"] for i in items),
-            "pass2_correct": sum(i["ok2"] for i in items), "items": items}
-
-
 def grounding_stats(rows: list[dict]) -> dict | None:
     """Claims whose quote is found on a stored page (needs results/raw bundles; None in a fresh clone)."""
     from agent.grounding import ground_row
@@ -174,22 +154,13 @@ def run_stats(log: list[dict], pass1_rows: list[dict], final_rows: list[dict]) -
     by_model = summarize(log, by="model")["groups"]
     return {"total_cost_usd": s["total_cost_usd"], "llm_calls": s["llm_calls"], "tool_calls": s["tool_calls"],
             "retries": s["retries"], "failures": s["failures"], "schema_invalid_rate": s["schema_invalid_rate"],
-            "by_stage": s["groups"], "by_model": {m: g for m, g in by_model.items() if m != "(tool)"},
+            "by_stage": s["groups"], "by_model": {m: g for m, g in by_model.items() if m not in ("(tool)", "?")},
             "pass1_run_id": pass1_rows[0]["meta"]["run_id"] if pass1_rows else None,
             "final_run_id": final_rows[0]["meta"]["run_id"] if final_rows else None}
 
 
-def spot_summary(spot: dict | None) -> dict | None:
-    if not spot:
-        return None
-    checks = spot.get("checks") or []
-    c = Counter(x.get("judgement") for x in checks)
-    return {"n": len(checks), "correct": c.get("correct", 0), "wrong": c.get("wrong", 0),
-            "cant_tell": c.get("cant_tell", 0), "seed": spot.get("seed"), "checks": checks}
-
-
 def verification_block(scores: dict, pass1: list[dict], final: list[dict], sample_ids: list[int],
-                       labeller: str | None = None, spot: dict | None = None,
+                       labeller: str | None = None,
                        catalog: dict | None = None) -> dict:
     p1, p2, cmp_ = scores.get("pass1"), scores.get("pass2"), scores.get("compare")
     needs_human = [{"id": r["id"], "app": r["app"]} for r in final if "needs_human" in r["flags"]]
@@ -204,7 +175,6 @@ def verification_block(scores: dict, pass1: list[dict], final: list[dict], sampl
     return {"status": "scored" if p1 else "pending_labels", "n_sample": len(sample_ids), "sample_ids": sample_ids,
             "n_labelled": (p1 or {}).get("n_apps"), "catalog": catalog,
             "labeller": labeller, "labeller_is_human": bool(labeller) and labeller.startswith("human"),
-            "spot_check": spot_summary(spot), "human_verified": human_verified(spot, pass1, final),
             "pass1": slim(p1), "pass2": slim(p2),
             "compare": {k: cmp_[k] for k in ("overall", "per_field", "fixed", "regressed", "tuned_on_sample", "n")
                         if k in cmp_} if cmp_ else None,
@@ -217,8 +187,9 @@ def verification_block(scores: dict, pass1: list[dict], final: list[dict], sampl
 
 
 def build_results(pass1: list[dict], final: list[dict], source: str, scores: dict, log: list[dict],
-                  splits: dict, pilot: dict | None, labeller: str | None = None, spot: dict | None = None,
-                  catalog: dict | None = None, catalog_split: dict | None = None) -> dict:
+                  splits: dict, pilot: dict | None, labeller: str | None = None,
+                  catalog: dict | None = None, catalog_split: dict | None = None,
+                  n_pass2_rows: int | None = None) -> dict:
     rows = sorted(final, key=lambda r: r["id"])
     stats = run_stats(log, pass1, rows)
     models = sorted({r["meta"]["model"] for r in rows})
@@ -228,11 +199,11 @@ def build_results(pass1: list[dict], final: list[dict], source: str, scores: dic
                  "total_cost_usd": stats["total_cost_usd"], "calls": stats["llm_calls"] + stats["tool_calls"],
                  "llm_calls": stats["llm_calls"], "tool_calls": stats["tool_calls"], "retries": stats["retries"],
                  "failures": stats["failures"], "seed": splits.get("seed"), "n_sample": len(splits.get("sample", [])),
-                 "run_stats": stats, "pilot": pilot},
+                 "run_stats": stats, "pilot": pilot, "n_pass2_rows": n_pass2_rows},
         "rows": rows,
         "patterns": compute_patterns(rows, catalog_split=catalog_split),
         "verification": verification_block(
-            scores, pass1, rows, splits.get("sample", []), labeller, spot, catalog=catalog
+            scores, pass1, rows, splits.get("sample", []), labeller, catalog=catalog
         ),
     }
 
@@ -304,8 +275,9 @@ def main(argv: list[str] | None = None) -> int:
 
     results = build_results(pass1, final, source, scores, log, splits,
                             _load_json(config.RESULTS_DIR / "pilot" / "compare.json"),
-                            gt.get("labeller"), _load_json(v / "spot_check.json"),
-                            catalog=catalog_agreement, catalog_split=catalog_split)
+                            gt.get("labeller"),
+                            catalog=catalog_agreement, catalog_split=catalog_split,
+                            n_pass2_rows=len(pass2) if pass2 else None)
     out = Path(args.out_dir)
     out.mkdir(parents=True, exist_ok=True)
     (out / "results.json").write_text(json.dumps(results, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")

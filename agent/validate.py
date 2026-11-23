@@ -1,6 +1,6 @@
 """Validity gate for a results file (SPEC §2.9): schema, ids, evidence, unknown reasons, rule flags.
 
-python -m agent.validate PATH [--expect N]  → exit 0 ok · 5 problems found · 2 usage / missing file
+python -m agent.validate PATH [--expect N]  -> exit 0 ok · 5 problems found · 2 usage / missing file
 """
 from __future__ import annotations
 

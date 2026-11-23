@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Toolkit Buildability — 100 SaaS apps, researched and verified</title>
-<meta name="description" content="Which of 100 SaaS apps could become an AI-agent toolkit today? Evidence-grounded research agent with verification loops and a blind 20-app accuracy check.">
+<title>Toolkit Buildability — 100 SaaS apps, researched with quoted evidence</title>
+<meta name="description" content="Which of 100 SaaS apps could become an AI-agent toolkit today? Evidence-grounded research agent; every answer quotes the vendor's docs or is marked unknown.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 :root{
   --bg:#fff;--line:rgba(0,0,0,.12);--rule:rgba(0,0,0,.06);--hover:rgba(0,0,0,.03);
   --text:#111;--muted:rgba(0,0,0,.72);--faint:rgba(0,0,0,.60);--ghost:rgba(0,0,0,.18);
-  --now:#047857;--gated:#1d4ed8;--blocked:#be123c;--unknown:rgba(0,0,0,.38);
+  --now:#047857;--gated:#1d4ed8;--blocked:#be123c;--unknown:rgba(0,0,0,.55);
   --accent:#1d4ed8;--hi:#4d7c0f;--yellow:#a16207;--orange:#c2410c;--magenta:#a21caf;--cyan:#0e7490;--indigo:#4338ca;
   --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Consolas,monospace;
@@ -187,7 +187,7 @@ footer{max-width:1120px;margin:0 auto;padding:28px 24px 56px;color:var(--faint);
 <main class="frame">
 
 <section id="result" class="hero">
-  <h1>{{ vc.buildable_now }} of {{ p.n }} apps are ready to build today; {{ vc.buildable_gated }} need outreach first, and {{ vc.blocked }} have no usable public API.</h1>
+  <h1>{{ vc.buildable_now }} of {{ p.n }} apps are ready to build today; {{ vc.buildable_gated }} are gated behind a paid plan, an approval or sales, and {{ vc.blocked }} have no usable public API.</h1>
   {% if p.catalog_split %}<p class="note">{{ p.catalog_split.in_catalog }} of {{ p.n }} already have a Composio toolkit (catalog fetched {{ p.catalog_split.fetched }}); the other {{ p.catalog_split.not_in_catalog }} are where new research is needed.</p>{% endif %}
   <p class="lede">A research agent read each app's own documentation and recorded how an AI agent would authenticate, how a developer gets credentials, and what stands in the way, with a verbatim quote behind every answer. {{ vc.buildable_gated }} more have a public API behind a paid plan, an approval or a sales call; {% if vc.blocked %}{{ vc.blocked }} {{ 'is' if vc.blocked == 1 else 'are' }} blocked{% else %}none is blocked outright{% endif %}{% if vc.unknown %}, and {{ vc.unknown }} could not be settled from the evidence{% endif %}.</p>
   <ul class="findings">
@@ -198,23 +198,16 @@ footer{max-width:1120px;margin:0 auto;padding:28px 24px 56px;color:var(--faint);
   </ul>
   <div class="tiles">
     <div class="tile">
-      {% set hv = v.human_verified %}
-      {% if hv %}
-      <div class="mono" style="color:var(--faint)">Verdicts checked by hand, pass 1 → pass 2</div>
-      <div class="big num">{{ hv.pass1_correct }}/{{ hv.n }} <small>→</small> {{ hv.pass2_correct }}/{{ hv.n }}</div>
-      <p>A person confirmed the correct verdict for {{ hv.n }} apps, one per category, from the vendors' docs.{% if v.compare %} Across all 7 fields of the {{ v.n_labelled or v.n_sample }}-app sample, agreement with independent reference labels moved {{ v.compare.overall.pass1|pct }} → {{ v.compare.overall.pass2|pct }} (n={{ v.compare.n }}).{% endif %}</p>
-      {% else %}
-      <div class="mono" style="color:var(--faint)">{{ "Accuracy" if v.labeller_is_human else "Agreement with reference" }}{{ ", pass 1 → pass 2" if v.compare else ", pass 1" }}</div>
+      <div class="mono" style="color:var(--faint)">Accuracy{{ ", pass 1 → pass 2" if v.compare else ", pass 1" }}</div>
       {% if v.compare %}
       <div class="big num">{{ v.compare.overall.pass1|pct }} <small>→</small> {{ v.compare.overall.pass2|pct }}{% if v.pass2 and v.pass2.overall.get('ci_low') is not none %} <small style="font-size:16px;font-weight:normal">95% CI {{ v.pass2.overall.ci_low|pct }}–{{ v.pass2.overall.ci_high|pct }}</small>{% endif %}</div>
-      <p>Field-level {{ "accuracy on a blind, human-labelled" if v.labeller_is_human else "agreement with independent reference labels on a blind" }} sample of {{ v.n_labelled or v.n_sample }} apps (n={{ v.compare.n }} checked fields).</p>
+      <p>Field-level accuracy on a blind, human-labelled sample of {{ v.n_labelled or v.n_sample }} apps (n={{ v.compare.n }} checked fields).</p>
       {% elif v.pass1 %}
       <div class="big num">{{ v.pass1.overall.accuracy_overall|pct }}{% if v.pass1.overall.get('ci_low') is not none %} <small style="font-size:16px;font-weight:normal">95% CI {{ v.pass1.overall.ci_low|pct }}–{{ v.pass1.overall.ci_high|pct }}</small>{% endif %}</div>
       <p>Pass-1 field-level accuracy on {{ v.n_labelled or v.n_sample }} hand-labelled apps (n={{ v.pass1.overall.n }} checked fields: verdict and auth methods).</p>
       {% else %}
       <div class="big">Not measured</div>
       <p>No hand labels were completed within the submission window, so this page reports no accuracy figure.</p>
-      {% endif %}
       {% endif %}
       <p class="note">Pass 1 is the agent's first answer; pass 2 is after its verification loops.</p>
     </div>
@@ -320,7 +313,7 @@ footer{max-width:1120px;margin:0 auto;padding:28px 24px 56px;color:var(--faint);
 
 <section id="agent">
   <h2>How the agent works</h2>
-  <p class="lede">The agent works in two passes. <b>Pass 1</b> (steps 1–5) researches each app once and records its first answers. <b>Pass 2</b> (steps 6–8) re-checks those answers with a second model, a judge and targeted re-research, and records every change. Search and page fetches run through Composio's search toolkit through its Python SDK; model calls run through the Antigravity CLI: Gemini 3.8 Flash for pass 1, GPT-OSS 120B as the second model and Claude Sonnet 4.6 as the judge. Every model call and tool call is logged and budget-capped.</p>
+  <p class="lede">The agent works in two passes. <b>Pass 1</b> (steps 1–5) researches each app once and records its first answers. <b>Pass 2</b> (steps 6–8) re-checks those answers with a second model, a judge and targeted re-research, and records every change. Search and page fetches run through Composio's search toolkit through its Python SDK; model calls run through the Antigravity CLI: Gemini 3.8 Flash for pass 1, GPT-OSS 120B as the second model and Claude Sonnet 4.6 as the judge. Every model call and tool call is logged (the spend cap applies to the OpenRouter backend; Antigravity calls cost $0).</p>
   <ol class="steps">
     <li><b>Search <em class="passtag">Pass 1</em></b><span>Four query templates per app, top three results each.</span></li>
     <li><b>Fetch <em class="passtag">Pass 1</em></b><span>Up to six pages, official domains first, 20,000 characters each, saved as an evidence bundle.</span></li>
@@ -334,10 +327,9 @@ footer{max-width:1120px;margin:0 auto;padding:28px 24px 56px;color:var(--faint);
   <div class="human">
     <h3>Where a human was needed</h3>
     <ul>
-      {% if v.labeller_is_human or not v.labeller %}<li>{% if v.pass1 %}Labelling {{ v.n_labelled or v.n_sample }} apps by hand from the vendors' docs to measure accuracy.{% else %}Labelling a sample by hand to measure accuracy; the form and scoring are built, but no labels were completed for this submission.{% endif %}</li>
-      {% else %}<li>Spot-checking the reference verdicts that an independent AI agent produced for the {{ v.n_labelled or v.n_sample }}-app sample{% if v.spot_check %} ({{ v.spot_check.n }} apps, one per category){% endif %}; hand-labelling all {{ (v.n_labelled or v.n_sample) * 7 }} fields did not fit the time available.</li>{% endif %}
+      <li>{% if v.pass1 %}Labelling {{ v.n_labelled or v.n_sample }} apps by hand from the vendors' docs to measure accuracy.{% else %}Labelling a sample by hand to measure accuracy; the form and scoring are built, but no labels were completed for this submission.{% endif %}</li>
       {% if m.source == "pass2" %}<li>{{ v.needs_human|length }} app{{ '' if v.needs_human|length == 1 else 's' }} still flagged “needs human” after pass 2{% if v.needs_human %}: {{ v.needs_human|map(attribute='app')|join(', ') }}{% endif %}.</li>{% endif %}
-      <li>Issuing API keys with the right permissions, reconciling spend with the provider, and approving every push.</li>
+      <li>Issuing API keys with the right permissions and approving every push.</li>
     </ul>
   </div>
   {% set rs = m.run_stats %}
@@ -356,27 +348,8 @@ footer{max-width:1120px;margin:0 auto;padding:28px 24px 56px;color:var(--faint);
 
 <section id="verification">
   <h2>How accurate is it?</h2>
-  {% if v.labeller_is_human or not v.labeller %}
-  <p class="lede">A person labelled {{ v.n_labelled or v.n_sample }} randomly drawn apps (one per category, from a seeded random sample) from the vendors' own documentation, without looking at this run's answers. Only the verdict and the auth methods were labelled; the other fields are left out of the score.{% if v.pass2 %} The same labels score pass 1 and pass 2.{% endif %} Unknown answers count as wrong.</p>
-  {% else %}
-  <p class="lede">{{ v.n_labelled or v.n_sample }} randomly drawn apps (two or three per category, drawn at random) were labelled from the vendors' own documentation by an independent AI research agent, {{ v.labeller.replace('agent:', '') }}, a different model family from every model in the pipeline, working in a separate folder with no access to the pipeline or its answers. The numbers below measure agreement with those reference labels, not verified accuracy. The same labels score pass 1 and pass 2; unknown answers count as wrong.</p>
-  {% endif %}
+  <p class="lede">{% if v.pass1 %}A person labelled {{ v.n_labelled or v.n_sample }} randomly drawn apps (three per category, from a seeded random sample) from the vendors' own documentation, without looking at this run's answers. Only the verdict and the auth methods were labelled; the other fields are left out of the score.{% if v.pass2 %} The same labels score pass 1 and pass 2.{% endif %} Unknown answers count as wrong.{% else %}A seeded random sample of {{ v.n_sample }} apps (three per category) was drawn for hand labelling, but no labels were completed for this submission, so this section reports no accuracy figure.{% endif %}</p>
   <p class="lede" style="margin-top:-18px">Pass 1 is the agent's first answer; pass 2 is after its verification loops (see <a href="#agent">how the agent works</a>).</p>
-  {% if v.spot_check %}
-  <div class="human" style="border-color:var(--now);margin:0 0 28px"><h3 style="color:var(--now)">Checked by a person</h3>
-    <ul><li>A person checked the reference verdict for {{ v.spot_check.n }} apps, one per category (seed {{ v.spot_check.seed }}): <b>{{ v.spot_check.correct }}</b> correct, <b>{{ v.spot_check.wrong }}</b> wrong, <b>{{ v.spot_check.cant_tell }}</b> could not tell from the source page.</li></ul></div>
-  {% endif %}
-  {% set hv = v.human_verified %}
-  {% if hv %}
-  <h3 class="subhead">Verdicts checked by hand</h3>
-  <p class="lede" style="margin-bottom:12px">A person opened the vendor's documentation for {{ hv.n }} apps, one per category, and confirmed the correct verdict. The agent's verdict was right for {{ hv.pass1_correct }} of {{ hv.n }} after pass 1 and {{ hv.pass2_correct }} of {{ hv.n }} after pass 2.</p>
-  <table class="kv">
-    <thead><tr><th>App</th><th>Category</th><th>Correct verdict (by hand)</th><th>Pass 1</th><th>Pass 2</th></tr></thead>
-    <tbody>{% for i in hv["items"] %}<tr><td>{{ i.app }}</td><td>{{ i.category }}</td><td>{{ VERDICT_LABEL.get(i.truth, i.truth) }}</td><td>{{ '✓' if i.ok1 else '✗' }} {{ VERDICT_LABEL.get(i.pass1, i.pass1) }}</td><td>{{ '✓' if i.ok2 else '✗' }} {{ VERDICT_LABEL.get(i.pass2, i.pass2) }}</td></tr>{% endfor %}</tbody>
-  </table>
-  <p class="foot mono">n={{ hv.n }} apps · one per category · seed {{ v.spot_check.seed }}</p>
-  <h3 class="subhead">All 7 fields, against the reference labels</h3>
-  {% endif %}
   {% if v.pass1 %}
   <div class="acc">
     {% for label, rep in [("Pass 1", v.pass1), ("Pass 2", v.pass2)] if rep %}
@@ -541,14 +514,13 @@ pytest -q                     # offline tests, no keys needed</pre>
 <section id="limitations">
   <h2>Limitations and tradeoffs</h2>
   <ul class="limits">
-    {% if v.labeller_is_human or not v.labeller %}<li>{% if v.pass1 %}Accuracy is measured on {{ v.n_labelled or v.n_sample }} apps ({{ v.pass1.overall.n }} checked fields: the verdict and the auth methods), labelled by one person in a time-boxed pass; the other five fields were not hand-labelled.{% else %}Accuracy was not measured: no hand labels were completed within the submission window.{% endif %} It is an estimate with wide error bars, not a guarantee.</li>
-    {% else %}<li>The reference labels for the {{ v.n_labelled or v.n_sample }}-app sample come from an independent AI agent, not a person, because hand-labelling 140 fields did not fit the time available. Agreement with them is not the same as accuracy{% if v.spot_check %}; a person spot-checked {{ v.spot_check.n }} of their verdicts{% endif %}. The sample is small ({{ (v.n_labelled or v.n_sample) * 7 }} fields), so treat the numbers as estimates with wide error bars.</li>{% endif %}
+    <li>{% if v.pass1 %}Accuracy is measured on {{ v.n_labelled or v.n_sample }} apps ({{ v.pass1.overall.n }} checked fields: the verdict and the auth methods), labelled by one person in a time-boxed pass; the other five fields were not hand-labelled. It is an estimate with wide error bars, not a guarantee.{% else %}Accuracy was not measured: no hand labels were completed within the submission window.{% endif %}</li>
     <li>Evidence comes from web search and plain page fetches. Documentation that only renders with JavaScript, sits behind a login or lives in PDFs is often missed; those fields show “unknown” with a reason.</li>
     <li>The second model reads the same pages as the first, so a retrieval miss can fool both. Only re-research gathers new evidence, and it is capped at five tool calls per app.</li>
     <li>“Buildable now” means a developer can obtain credentials alone today. It does not check rate limits, terms of service in depth, or approval timelines.</li>
     {% if v.pass1 %}<li>Labels are not fully blind (the labeller had seen earlier agent output for some apps).</li>{% endif %}
     <li>Antigravity CLI quota and latency limit how often the full run can be repeated.</li>
-    {% if m.source != "pass2" %}<li>Pass 2 (second model, judge and targeted re-research) is built and tested, but it did not finish on all 100 apps within the submission window, so the per-app results on this page are from pass 1{% if v.pass2 %}; pass 2 accuracy is reported for the labelled sample only{% endif %}.</li>{% endif %}
+    {% if m.source != "pass2" %}<li>Pass 2 (second model, judge and targeted re-research) is built and tested, but it did not finish on all 100 apps within the submission window{% if m.n_pass2_rows is not none %} (it stopped after {{ m.n_pass2_rows }} apps){% endif %}, so the per-app results on this page are from pass 1{% if v.pass2 %}; pass 2 accuracy is reported for the labelled sample only{% endif %}.</li>{% endif %}
     <li>The catalog check compares with Composio's current catalog, which may list only some of an app's methods.</li>
     <li>There is no browser-based verification loop: checks run on fetched page text, so content that only appears after JavaScript runs can be missed.</li>
     <li>There is no hosted run button, since it would expose API keys and spend credits; the agent runs from the repository with your own keys, as the README shows.</li>
