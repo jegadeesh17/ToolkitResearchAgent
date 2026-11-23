@@ -1,3 +1,4 @@
+import copy
 import json
 import re
 from pathlib import Path
@@ -95,6 +96,21 @@ def test_pending_state_is_honest(results):
     html = render_html(results)
     assert results["verification"]["status"] == "pending_labels" and "Accuracy was not measured" in html
     assert "A person labelled" not in html and "verified" not in html.split("</title>")[0]
+
+
+def test_pass2_count_shown_only_when_known(results):
+    res = copy.deepcopy(results)
+    assert res["meta"]["source"] != "pass2"
+    res["meta"]["n_pass2_rows"] = 19
+    assert "stopped after 19 apps" in render_html(res)
+    for missing in (None, 0, "absent"):
+        if missing == "absent":
+            del res["meta"]["n_pass2_rows"]
+        else:
+            res["meta"]["n_pass2_rows"] = missing
+        html = render_html(res)
+        assert "did not finish on all 100 apps" in html
+        assert "stopped after" not in html and "after  apps" not in html
 
 
 def test_scored_state_shows_n_and_misses(results, rows):
