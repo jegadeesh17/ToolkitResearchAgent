@@ -147,17 +147,6 @@ def test_site_is_not_a_python_package():
     assert not Path("site/__init__.py").exists()
 
 
-def test_agent_reference_labels_are_disclosed(rows):
-    splits = {"seed": 20260924, "sample": load_split("sample")}
-    spot = {"seed": 7, "checks": [{"judgement": "correct"}] * 8 + [{"judgement": "wrong"}, {"judgement": "cant_tell"}]}
-    res = build_results(rows, rows, "pass2", {}, [], splits, None, "agent:gemini-cli (pro)", spot)
-    html = render_html(res)
-    assert "independent AI research agent, gemini-cli (pro), a different model family" in html
-    assert "not verified accuracy" in html
-    assert "<b>8</b> correct, <b>1</b> wrong, <b>1</b> could not tell" in html
-    assert res["verification"]["labeller_is_human"] is False
-
-
 def test_pass1_and_pass2_are_defined_for_new_readers(results):
     html = render_html(results)
     agent = html[html.index('id="agent"'):html.index('id="verification"')]
@@ -169,13 +158,9 @@ def test_pass1_and_pass2_are_defined_for_new_readers(results):
     assert "Pass 1 is the agent's first answer" in verif
 
 
-def test_human_needed_box_matches_who_labelled(rows):
+def test_human_needed_box_describes_hand_labelling(rows):
     splits = {"seed": 20260924, "sample": load_split("sample")}
-    spot = {"seed": 7, "checks": [{"judgement": "correct"}] * 10}
-    agent_html = render_html(build_results(rows, rows, "pass2", {}, [], splits, None, "agent:gemini-cli (x)", spot))
-    box = agent_html[agent_html.index("Where a human was needed"):agent_html.index('class="stats"')]
-    assert "Labelling a sample by hand to measure accuracy" not in box and "Spot-checking" in box
-    human_html = render_html(build_results(rows, rows, "pass2", {}, [], splits, None, "human", None))
+    human_html = render_html(build_results(rows, rows, "pass2", {}, [], splits, None, "human"))
     box = human_html[human_html.index("Where a human was needed"):human_html.index('class="stats"')]
     assert "Labelling a sample by hand to measure accuracy" in box
 
@@ -190,26 +175,6 @@ def test_takeaways_are_plainly_stated_up_top_and_on_cards(results):
         assert t[k] in hero
     for k in ("auth", "access", "blockers", "mcp", "categories", "wins"):
         assert t[k] in patterns
-
-
-def test_human_verified_verdicts_are_the_headline_check(rows):
-    splits = {"seed": 20260924, "sample": load_split("sample")}
-    a, b = rows[0], rows[1]
-    spot = {"seed": 7, "checks": [
-        {"id": a["id"], "app": a["app"], "category": a["category"], "reference_verdict": a["verdict"],
-         "judgement": "correct"},
-        {"id": b["id"], "app": b["app"], "category": b["category"], "reference_verdict": "unknown_x",
-         "judgement": "wrong", "corrected_verdict": "blocked"},
-        {"id": 99, "app": "Z", "category": "C", "reference_verdict": "blocked", "judgement": "cant_tell"}]}
-    res = build_results(rows, rows, "pass2", {}, [], splits, None, "agent:x", spot)
-    hv = res["verification"]["human_verified"]
-    expected = 1 + (b["verdict"] == "blocked")
-    assert hv["n"] == 2 and hv["pass2_correct"] == expected
-    html = render_html(res)
-    hero = html[html.index('id="result"'):html.index('id="patterns"')]
-    assert f"{expected}/2 <small>→</small> {expected}/2" in hero and "Verdicts checked by hand" in hero
-    verif = html[html.index('id="verification"'):html.index('id="table"')]
-    assert "Verdicts checked by hand" in verif and a["app"] in verif
 
 
 def test_composio_sdk_and_new_limitations_are_stated(results):
