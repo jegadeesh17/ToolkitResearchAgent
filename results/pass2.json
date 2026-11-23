@@ -1,0 +1,1626 @@
+[
+ {
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "official",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "HubSpot is a CRM and sales platform for managing contacts, deals, engagements, and building applications on its developer platform.",
+  "existing_mcp_url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/integrate-with-hubspot-mcp-server",
+  "api_pricing_tier": "free",
+  "confidence": 0.9,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+     "quote": "If you want to limit distribution of your app to a single authorized account, you’ll use a static auth access token. This token can be found in your app settings."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://developers.hubspot.com/ai-tools/mcp",
+     "quote": "It has read-only access to standard records such as contacts, companies, deals, tickets, users, line items, quotes, invoices, orders, carts, products, subscriptions, and their associations."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://developers.hubspot.com/docs/apps/legacy-apps/authentication/working-with-oauth",
+     "quote": "Each scope provides access to a set of HubSpot API endpoints and allows users to grant your app access to specific tools in their HubSpot account."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+     "quote": "There are two authentication types available based on how you plan to distribute your app: OAuth is required for multiple accounts, while static auth access tokens are used for installing in a single account at a time."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+     "quote": "If you want to limit distribution of your app to a single authorized account, you’ll use a static auth access token. This token can be found in your app settings."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://developers.hubspot.com/ai-tools/mcp",
+     "quote": "HubSpot offers two distinct MCP (Model Context Protocol) servers — one for connecting any MCP-compatible AI tool or agent to your CRM, and one for building on the HubSpot Developer Platform."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://developers.hubspot.com/docs/apps/legacy-apps/authentication/working-with-oauth",
+     "quote": "This way, customers using HubSpot free accounts can still authorize your app, even if they can’t access all of its scopes."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 2,
+  "app": "HubSpot",
+  "category": "CRM and Sales",
+  "flags": [],
+  "pass2_diff": [],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:51:24Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "existing_mcp": "third_party",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "Copper is a CRM tool integrated with Google Workspace and Gmail for managing contacts, leads, and sales pipelines.",
+  "existing_mcp_url": "https://www.activepieces.com/mcp/copper",
+  "api_pricing_tier": "trial",
+  "confidence": 0.7571,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://www.copper.com/pricing",
+     "quote": "Start free, no credit card required."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://www.activepieces.com/mcp/copper",
+     "quote": "It can call 20 tools, including Create Person, Update Person, Create Lead, and chain them with steps in other apps inside the same run."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://developer.copper.com/introduction/oauth/index.html",
+     "quote": "Although it's entirely feasible to implement the OAuth 2.0 flow through plain REST, it's advisable to leverage a library tailored to your chosen application language or framework."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://developer.copper.com/introduction/authentication.html",
+     "quote": "There are two ways to access the Copper Developer API: [API keys](#api-keys) and [OAuth2.0](#oauth20). API Keys are suitable for individual users, while OAuth2.0 is the preferred approach for partner integrations."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://www.copper.com/pricing",
+     "quote": "Start free, no credit card required."
+    },
+    {
+     "url": "https://developer.copper.com/introduction/authentication.html",
+     "quote": "To generate an API token, in the Copper web app go to System settings > API Keys and click the 'GENERATE API KEY' button."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://www.activepieces.com/mcp/copper",
+     "quote": "Copper is not a separate install. One Activepieces MCP server exposes it alongside 770+ other apps, behind a single URL."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://developer.copper.com/introduction/authentication.html",
+     "quote": "To generate an API token, in the Copper web app go to System settings > API Keys and click the 'GENERATE API KEY' button."
+    },
+    {
+     "url": "https://www.copper.com/pricing",
+     "quote": "Start free, no credit card required."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 9,
+  "app": "Copper",
+  "category": "CRM and Sales",
+  "flags": [
+   "cross_model_disagree"
+  ],
+  "pass2_diff": [
+   {
+    "field": "access_model",
+    "before": "self_serve_trial",
+    "after": "self_serve_free",
+    "resolved_by": "judge",
+    "reason": "The pricing page states a free tier with no credit card required, confirming self-serve free access."
+   }
+  ],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:46:14Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "api_key"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "graphql"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "official",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "Plain is the API-first customer infrastructure platform for B2B SaaS.",
+  "existing_mcp_url": "https://mcp.plain.com/mcp",
+  "api_pricing_tier": "trial",
+  "confidence": 0.8286,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://www.plain.com/docs/graphql/authentication",
+     "quote": "Create a machine user and an API key, and scope it with fine‑grained permissions."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://www.plain.com/blog/api-first-support-platforms",
+     "quote": "There are no feature gaps between what you can do in the modern, 100ms UI and what you can do programmatically. Every button click in the Plain UI is a GraphQL mutation, and every data view is a GraphQL query. The API is the product."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://www.plain.com/blog/api-first-support-platforms",
+     "quote": "The only platform with a GraphQL API, no restrictive rate limits, native MCP server support, full API-UI parity, and an open-source typed TypeScript SDK."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://www.plain.com/docs/graphql/authentication",
+     "quote": "A machine user can have several API keys, so you can rotate them without downtime. Each API key carries its own fine-grained permissions."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://www.plain.com/blog/api-first-support-platforms",
+     "quote": "Full API access on all plans — no API add-ons."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://www.plain.com/docs/integrations/mcp-server",
+     "quote": "You authenticate with your existing Plain account, so the MCP server has the same permissions as your user."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://www.plain.com/blog/api-first-support-platforms",
+     "quote": "Full API access on all plans — no API add-ons. Ari is charged per resolution (100 credits, from the plan's monthly allowance). 7-day free trial, no credit card required."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 17,
+  "app": "Plain",
+  "category": "Support and Helpdesk",
+  "flags": [
+   "cross_model_disagree"
+  ],
+  "pass2_diff": [
+   {
+    "field": "access_model",
+    "before": "self_serve_trial",
+    "after": "self_serve_free",
+    "resolved_by": "reresearch",
+    "reason": "re-researched with 3 new page(s)"
+   }
+  ],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:53:03Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "basic"
+  ],
+  "access_model": "admin_or_approval",
+  "api_type": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "third_party",
+  "verdict": "buildable_gated",
+  "blocker": "approval_or_partnership",
+  "description": "Gladly is a San Francisco–based people-centered customer service AI platform.",
+  "existing_mcp_url": "https://cotlet.dev/integrations/gladly-api-mcp-server",
+  "api_pricing_tier": "unknown",
+  "confidence": 0.7857,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://developer.gladly.com/rest",
+     "quote": "Gladly Administrators can set API permissions on an agent-by-agent basis. We'll discuss how this maps to API access in the section on authentication below."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://www.getmacha.com/blog/gladly-api-explained",
+     "quote": "Gladly's REST API reference groups its operations under 21 resources, from Agents and Answer Management to Topics and Webhooks."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://developer.gladly.com/rest",
+     "quote": "Resources follow REST semantics and utilize industry-standard HTTP verbs, response codes, and authentication schemes."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://developer.gladly.com/rest",
+     "quote": "Gladly API uses token-based Basic Authentication."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://developer.gladly.com/rest",
+     "quote": "Gladly Administrators can set API permissions on an agent-by-agent basis."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://mcpservers.org/servers/cotlet-dev-integrations-gladly-api-mcp-server",
+     "quote": "Cotlet runs a remote MCP server that gives your AI agent a Cloud Browser: a Chrome that runs in the cloud and stays signed in to your Gladly business account."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://developer.gladly.com/rest",
+     "quote": "To allow a user to create API tokens and access the API: 1. Log in to your Gladly instance. 2. Open the menu on the top left-hand corner of the page. 3. Navigate to Settings > **Users"
+    }
+   ]
+  },
+  "unknown_reason": {
+   "api_pricing_tier": "no_docs_found"
+  },
+  "id": 20,
+  "app": "Gladly",
+  "category": "Support and Helpdesk",
+  "flags": [
+   "cross_model_disagree"
+  ],
+  "pass2_diff": [],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:46:53Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "oauth2"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "other"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "official",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "A smarter, simpler way to chat and collaborate that enables teams to communicate and stay connected.",
+  "existing_mcp_url": "https://mcp.slack.com/mcp",
+  "api_pricing_tier": "free",
+  "confidence": 0.8714,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://slack.com/pricing",
+     "quote": "Or start with the basics for free, and upgrade at any time."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://docs.slack.dev/apis/web-api",
+     "quote": "With over 200 methods, surely there's one right for you. You can find them all in the [reference](/reference/methods), where you can filter by method family."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://docs.slack.dev/apis/web-api",
+     "quote": "The Web API is a collection of HTTP RPC-style methods, all with URLs in the form `https://slack.com/api/METHOD_FAMILY.method`."
+    },
+    {
+     "url": "https://docs.slack.dev/apis/web-api",
+     "quote": "While it's not a REST API, those familiar with REST should be at home with its foundations in HTTP."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://docs.slack.dev/apis/web-api",
+     "quote": "[Register your application](https://api.slack.com/apps) with Slack to obtain credentials for use with our [OAuth 2.0](/authentication/installing-with-oauth) implementation, which allows you to negotiate tokens on behalf of users and workspaces."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://docs.slack.dev/apis/web-api/rate-limits",
+     "quote": "All Slack plans receive the same rate limit tier for each method."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://docs.slack.dev/ai/slack-mcp-server",
+     "quote": "With the Slack MCP server, your integrated apps can search channels, send messages, and perform other Slack actions through MCP clients."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://docs.slack.dev/apis/web-api",
+     "quote": "[Register your application](https://api.slack.com/apps) with Slack to obtain credentials for use with our [OAuth 2.0](/authentication/installing-with-oauth) implementation, which allows you to negotiate tokens on behalf of users and workspaces."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 21,
+  "app": "Slack",
+  "category": "Communications and Messaging",
+  "flags": [
+   "cross_model_disagree"
+  ],
+  "pass2_diff": [],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:46:30Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "access_model": "paid_plan_required",
+  "api_type": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "third_party",
+  "verdict": "buildable_gated",
+  "blocker": "paid_plan_required",
+  "description": "All-in-one platform for CRM, automations, funnels & websites built for agencies.",
+  "existing_mcp_url": "https://services.leadconnectorhq.com/mcp/",
+  "api_pricing_tier": "paid_standard",
+  "confidence": 0.7857,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://help.gohighlevel.com/support/solutions/articles/48001060529-highlevel-api-documentation",
+     "quote": "Basic API access is included with our Starter and Unlimited plans, while Advanced API access is available on our Agency Pro plan."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://conduyt.com/resources/gohighlevel-api",
+     "quote": "The v3 reference navigation on the developer portal lists more than 40 distinct resource groups."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://help.gohighlevel.com/support/solutions/articles/48001060529-highlevel-api-documentation",
+     "quote": "Our API includes REST endpoints for contacts, messaging, workflows, calendars, payments, webhooks, and more."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://autogencrm.com/gohighlevel-api",
+     "quote": "There are two supported methods. HighLevel’s help center says Private Integration Tokens suit internal or single-account tools. OAuth 2.0 suits public or Marketplace apps that need user-approved access across many accounts."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://help.gohighlevel.com/support/solutions/articles/48001060529-highlevel-api-documentation",
+     "quote": "Basic API access is included with our Starter and Unlimited plans, while Advanced API access is available on our Agency Pro plan."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://github.com/drausal/gohighlevel-mcp",
+     "quote": "A Model Context Protocol (MCP) server providing access to the complete GoHighLevel API. This server enables AI assistants like Claude to interact with GoHighLevel's services including contacts, opportunities, calendars, workflows, and more."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://help.gohighlevel.com/support/solutions/articles/48001060529-highlevel-api-documentation",
+     "quote": "Basic API access is included with our Starter and Unlimited plans, while Advanced API access is available on our Agency Pro plan."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 34,
+  "app": "GoHighLevel",
+  "category": "Marketing, Ads, Email and Social",
+  "flags": [
+   "cross_model_disagree"
+  ],
+  "pass2_diff": [
+   {
+    "field": "existing_mcp",
+    "before": "official",
+    "after": "third_party",
+    "resolved_by": "judge",
+    "reason": "Candidate A's quote does not appear anywhere in the supplied pages; the only evidenced MCP server is the non-vendor GitHub repository by user 'drausal'."
+   }
+  ],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:51:07Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "api_key"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "third_party",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "SendGrid (by Twilio) is a cloud-based email delivery service that provides a REST API for sending emails at scale.",
+  "existing_mcp_url": "https://github.com/FINCH285/SendGrid-MCP-Server",
+  "api_pricing_tier": "free",
+  "confidence": 0.8429,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://apis.io/providers/sendgrid",
+     "quote": "Prices published by SendGrid, read 2026-10-12 from www.twilio.com/en-us/products/email-api/pricing. A free plan or tier is listed."
+    },
+    {
+     "url": "https://www.twilio.com/en-us/blog/developers/community/build-a-sendgrid-mcp-server-for-ai-email-workflows",
+     "quote": "You will receive a 60-day free trial that allows up to 100 email sends per day."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://apis.io/providers/sendgrid",
+     "quote": "SendGrid publishes 63 API contracts indexed on the APIs.io network, including Account API, Account State API, Alerts API, and 60 more."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://apis.io/providers/sendgrid",
+     "quote": "SendGrid is a cloud-based email delivery platform, acquired by Twilio in 2019, that provides transactional and marketing email at scale over an HTTP v3 REST API and an SMTP relay."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication",
+     "quote": "Authenticate to the Twilio SendGrid API by creating an API Key in the Settings section of the Twilio SendGrid console"
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication",
+     "quote": "Twilio SendGrid supports API keys delivered via Bearer token or Basic authentication, depending on the Twilio SendGrid functionality you are using."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://www.twilio.com/en-us/blog/developers/community/build-a-sendgrid-mcp-server-for-ai-email-workflows",
+     "quote": "The complete source code is available in this [GitHub repository](https://github.com/FINCH285/SendGrid-MCP-Server). You can refer to it if you get stuck or want to see the full project."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://apis.io/providers/sendgrid",
+     "quote": "SendGrid is a cloud-based email delivery platform, acquired by Twilio in 2019, that provides transactional and marketing email at scale over an HTTP v3 REST API and an SMTP relay."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 40,
+  "app": "SendGrid",
+  "category": "Marketing, Ads, Email and Social",
+  "flags": [
+   "cross_model_disagree"
+  ],
+  "pass2_diff": [],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:53:28Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "rest",
+   "graphql"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "third_party",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "Shopify is an ecommerce platform providing APIs that allow developers to build apps and integrations to extend the Shopify admin and store experiences.",
+  "existing_mcp_url": "https://github.com/siddhantbajaj/shopify-mcp-server.git",
+  "api_pricing_tier": "free",
+  "confidence": 0.6571,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://shopify.dev/docs/api/admin-rest",
+     "quote": "Public and custom apps created in the Dev Dashboard generate tokens using OAuth, and custom apps made in the Shopify admin are authenticated in the Shopify admin."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://shopify.dev/docs/api/admin-rest",
+     "quote": "Admin REST API endpoints are organized by resource type. You'll need to use different endpoints depending on your app's requirements."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://shopify.dev/docs/api/admin-rest",
+     "quote": "The REST Admin API is a legacy API as of October 1, 2024. Starting April 1, 2025, all new public apps must be built exclusively with the GraphQL Admin API."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://shopify.dev/docs/api/usage/authentication",
+     "quote": "OAuth, usually token exchange"
+    },
+    {
+     "url": "https://shopify.dev/docs/api/usage/authentication",
+     "quote": "Create public or private tokens"
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://shopify.dev/docs/api/admin-rest",
+     "quote": "Public and custom apps created in the Dev Dashboard generate tokens using OAuth, and custom apps made in the Shopify admin are authenticated in the Shopify admin."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://www.mcpserverfinder.com/servers/siddhantbajaj/shopify-mcp-server",
+     "quote": "A Model Context Protocol (MCP) server to connect clients like Claude with Shopify store data. This server exposes tools for retrieving product and customer information from your Shopify store."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://shopify.dev/docs/api/admin-rest",
+     "quote": "Public and custom apps created in the Dev Dashboard generate tokens using OAuth, and custom apps made in the Shopify admin are authenticated in the Shopify admin."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 41,
+  "app": "Shopify",
+  "category": "Ecommerce",
+  "flags": [
+   "cross_model_disagree"
+  ],
+  "pass2_diff": [],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:59:18Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "access_model": "paid_plan_required",
+  "api_type": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "official",
+  "verdict": "buildable_gated",
+  "blocker": "paid_plan_required",
+  "description": "Website and ecommerce platform providing commerce APIs to manage online stores, products, orders, inventory, and domains.",
+  "existing_mcp_url": "https://mcp.squarespace.com/mcp",
+  "api_pricing_tier": "paid_standard",
+  "confidence": 0.7,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+     "quote": "With [Squarespace's Commerce Advanced](https://www.squarespace.com/pricing) plan, you can develop a custom application for a Squarespace merchant site."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+     "quote": "Read the permission levels for each Commerce API below. Then, depending on your development needs, authenticate requests by using an API key or OAuth access token."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://developers.squarespace.com/commerce-apis/changelog",
+     "quote": "v2 endpoints are available at `/v2/commerce/products/*` and are marked as Beta."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+     "quote": "authenticate requests by using an API key or OAuth access token"
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+     "quote": "With [Squarespace's Commerce Advanced](https://www.squarespace.com/pricing) plan, you can develop a custom application for a Squarespace merchant site."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://developers.squarespace.com/mcp/connect-a-client",
+     "quote": "The Squarespace MCP server is a remote server: your client connects to it over HTTPS, and there's nothing to install."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+     "quote": "With [Squarespace's Commerce Advanced](https://www.squarespace.com/pricing) plan, you can develop a custom application for a Squarespace merchant site."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 46,
+  "app": "Squarespace",
+  "category": "Ecommerce",
+  "flags": [
+   "cross_model_disagree"
+  ],
+  "pass2_diff": [],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:53:37Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "api_key"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "official",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "Apify is a platform for web scraping and data extraction that lets developers build, run, and share serverless programs called Actors.",
+  "existing_mcp_url": "https://mcp.apify.com",
+  "api_pricing_tier": "free",
+  "confidence": 0.9,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://apify.com/pricing",
+     "quote": "Absolutely! We offer a free plan that lets you use most of the features of the Apify platform, but with certain limits. No credit card is required."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://docs.apify.com/integrations/api",
+     "quote": "All aspects of the Apify platform can be controlled via a REST API, which is described in detail in the **API Reference**."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://docs.apify.com/api",
+     "quote": "The Apify API is built around HTTP REST, uses predictable resource-oriented URLs, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://docs.apify.com/integrations/api",
+     "quote": "To access the Apify API in your integrations, you need to authenticate using your secret API token. You manage your tokens on the API & Integrations page in Apify Console."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://apify.com/pricing",
+     "quote": "Absolutely! We offer a free plan that lets you use most of the features of the Apify platform, but with certain limits. No credit card is required."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://blog.apify.com/how-to-use-mcp",
+     "quote": "Once Claude, Cursor, or your own agent connects to `https://mcp.apify.com`, it can find the right Actor, run it, and read the results, with no custom integration for each Actor."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://apify.com/pricing",
+     "quote": "Absolutely! We offer a free plan that lets you use most of the features of the Apify platform, but with certain limits. No credit card is required."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 55,
+  "app": "Apify",
+  "category": "Data, SEO and Scraping",
+  "flags": [],
+  "pass2_diff": [],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:53:47Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "api_key"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "existing_mcp": "official",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "Bright Data is a web data platform offering web scraping, ready-made datasets, SERP APIs, proxy networks, and MCP tools for AI agents.",
+  "existing_mcp_url": "https://mcp.brightdata.com/sse",
+  "api_pricing_tier": "free",
+  "confidence": 0.8714,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://docs.brightdata.com/general/account/billing-and-pricing/free-tier",
+     "quote": "The free tier is a recurring monthly credit allowance that applies automatically to every new account."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://docs.brightdata.com/introduction",
+     "quote": "Guides, quickstarts and API references for Bright Data Scraper API, Scraper Studio, Web Unlocker API, SERP API, proxies, datasets and Bright Data MCP."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://docs.brightdata.com/products/scraper-studio/quickstart",
+     "quote": "1. `POST /dca/trigger`, which queues one or more inputs and returns a snapshot ID."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://docs.brightdata.com/api-reference/marketplace-dataset-api/get-dataset-list",
+     "quote": "Use your Bright Data API Key as a Bearer token in the Authorization header."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://docs.brightdata.com/general/account/billing-and-pricing/free-tier",
+     "quote": "Get 5,000 free credits per month, no credit card, across Web Unlocker API, SERP API, Web Scraper API, Scraper Studio and Browser API."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://docs.brightdata.com/products/mcp-server/remote/quickstart",
+     "quote": "Connect AI agents to the fully managed Bright Data Remote MCP server (30 tools) with no setup: authentication, tool selection and a working sample request."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://docs.brightdata.com/general/account/billing-and-pricing/free-tier",
+     "quote": "Get 5,000 free credits per month, no credit card, across Web Unlocker API, SERP API, Web Scraper API, Scraper Studio and Browser API."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 57,
+  "app": "Bright Data",
+  "category": "Data, SEO and Scraping",
+  "flags": [
+   "cross_model_disagree"
+  ],
+  "pass2_diff": [],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:54:27Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "oauth2",
+   "api_key",
+   "basic"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "third_party",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "Development platform for repository management, code collaboration, and workflow automation via the GitHub REST API.",
+  "existing_mcp_url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/github",
+  "api_pricing_tier": "free",
+  "confidence": 0.7857,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+     "quote": "If you want to use the GitHub REST API for personal use, you can create a personal access token."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://docs.github.com/rest",
+     "quote": "Create integrations, retrieve data, and automate your workflows with the GitHub REST API."
+    },
+    {
+     "url": "https://docs.github.com/rest",
+     "quote": "Showing 1-9 of 205"
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://docs.github.com/rest",
+     "quote": "Create integrations, retrieve data, and automate your workflows with the GitHub REST API."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+     "quote": "If you want to use the GitHub REST API for personal use, you can create a personal access token."
+    },
+    {
+     "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+     "quote": "Some REST API endpoints for GitHub Apps and OAuth apps require you to use basic authentication to access the endpoint. You will use the app's client ID as the username and the app's client secret as the password."
+    },
+    {
+     "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+     "quote": "You can also create an OAuth token with an OAuth app to access the REST API."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api",
+     "quote": "You can use a personal access token to make API requests. Additionally, you can authorize a GitHub App or OAuth app, which can then make API requests on your behalf."
+    },
+    {
+     "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+     "quote": "If you want to use the GitHub REST API for personal use, you can create a personal access token."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://github.com/modelcontextprotocol/servers",
+     "quote": "* **[GitHub](https://github.com/modelcontextprotocol/servers-archived/tree/main/src/github)** - Repository management, file operations, and GitHub API integration."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+     "quote": "If you want to use the GitHub REST API for personal use, you can create a personal access token."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 61,
+  "app": "GitHub",
+  "category": "Developer, Infra and Data platforms",
+  "flags": [
+   "cross_model_disagree"
+  ],
+  "pass2_diff": [
+   {
+    "field": "auth_methods",
+    "before": [
+     "api_key",
+     "oauth2"
+    ],
+    "after": [
+     "api_key",
+     "basic",
+     "oauth2"
+    ],
+    "resolved_by": "judge",
+    "reason": "PATs are static dashboard keys (api_key), OAuth apps use an authorization flow (oauth2), and some endpoints explicitly require HTTP Basic auth with client ID and secret (basic); no separate non-OAuth "
+   }
+  ],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T17:03:00Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "rest",
+   "graphql"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "official",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "Supabase auto-generates an API directly from your database schema allowing you to connect to your database through a restful interface, directly from the brows…",
+  "existing_mcp_url": "https://supabase.com/docs/guides/ai-tools/mcp",
+  "api_pricing_tier": "free",
+  "confidence": 0.8143,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://supabase.com/pricing",
+     "quote": "Start building for free, collaborate with your team, then scale to millions of users"
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://supabase.com/docs/reference/api/introduction",
+     "quote": "Manage your Supabase organizations and projects programmatically."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://supabase.com/docs/guides/api",
+     "quote": "Supabase auto-generates an API directly from your database schema allowing you to connect to your database through a restful interface, directly from the browser."
+    },
+    {
+     "url": "https://supabase.com/docs/guides/auth",
+     "quote": "Data API (REST)"
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://supabase.com/docs/guides/api",
+     "quote": "The API is configured to work with Postgres's Row Level Security, provisioned behind an API gateway with key-auth enabled."
+    },
+    {
+     "url": "https://supabase.com/docs/reference/api/introduction",
+     "quote": "Authorize user"
+    },
+    {
+     "url": "https://supabase.com/docs/guides/api",
+     "quote": "You can find the API Keys in the Settings > API Keys section of the Dashboard."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://supabase.com/pricing",
+     "quote": "Start building for free, collaborate with your team, then scale to millions of users"
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://supabase.com/blog/supabase-is-now-an-official-claude-connector",
+     "quote": "The Supabase MCP server is now listed on Claude's official connectors. Connect your Supabase projects to Claude and manage your entire database infrastructure by telling Claude what you need."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://supabase.com/pricing",
+     "quote": "Start building for free, collaborate with your team, then scale to millions of users"
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 65,
+  "app": "Supabase",
+  "category": "Developer, Infra and Data platforms",
+  "flags": [
+   "cross_model_disagree"
+  ],
+  "pass2_diff": [
+   {
+    "field": "api_type",
+    "before": [
+     "rest"
+    ],
+    "after": [
+     "graphql",
+     "rest"
+    ],
+    "resolved_by": "judge",
+    "reason": "The pages confirm both a REST API (PostgREST) and a GraphQL API module exist as public Supabase APIs."
+   }
+  ],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:58:20Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "official",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "Airtable is a cloud-based platform that helps teams orchestrate their work and build applications.",
+  "existing_mcp_url": "https://mcp.airtable.com/mcp",
+  "api_pricing_tier": "free",
+  "confidence": 0.9,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://airtable.com/developers/web/guides/personal-access-tokens",
+     "quote": "The personal access tokens panel can be accessed at [/create/tokens](https://airtable.com/create/tokens). Here, you can create new tokens and manage your existing tokens."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://support.airtable.com/articles/2022585894-airtable-enterprise-api",
+     "quote": "The Enterprise API allows teams to manage their account programmatically outside of the Admin panel UI through actions like managing users, updating access permissions, and managing bases, tables, and views."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://support.airtable.com/articles/7735693959-managing-api-call-limits-in-airtable",
+     "quote": "Airtable's Web API is RESTful, meaning it uses standard web protocols and returns data in JSON format."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://airtable.com/developers/web/guides/personal-access-tokens",
+     "quote": "Personal access tokens are used to authenticate requests to Airtable's API when developing an integration for yourself, your client, or for your company."
+    },
+    {
+     "url": "https://www.airtable.com/developers/agents/mcp/getting-started",
+     "quote": "Our MCP server supports two authentication methods: OAuth (recommended for end-user connections) and Personal Access Tokens (PATs, recommended for CLI, scripts, and server-side setups)."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://airtable.com/developers/web/guides/personal-access-tokens",
+     "quote": "Personal access tokens can be used to make requests to all public Airtable API endpoints, including endpoints that were previously limited in availability such as the Metadata API endpoints."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://www.airtable.com/developers/agents/mcp/getting-started",
+     "quote": "Airtable's MCP server lets you connect AI tools directly to your Airtable bases."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://support.airtable.com/articles/7735693959-managing-api-call-limits-in-airtable",
+     "quote": "Airtable's Web API is RESTful, meaning it uses standard web protocols and returns data in JSON format."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 72,
+  "app": "Airtable",
+  "category": "Productivity and Project Management",
+  "flags": [],
+  "pass2_diff": [],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:56:04Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "api_key"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "third_party",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "Coda brings teams and tools together for a more organized work day.",
+  "existing_mcp_url": "https://github.com/orellazri/coda-mcp",
+  "api_pricing_tier": "free",
+  "confidence": 0.9,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://github.com/orellazri/coda-mcp",
+     "quote": "Your Coda API key. You can generate one from your Coda account settings."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://apis.apievangelist.com/store/coda-account-api",
+     "quote": "Coda Account API is one of 18 APIs that Coda publishes on the APIs.io network, described by a machine-readable OpenAPI specification and an AsyncAPI event-driven specification."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://apis.io/apis/coda/coda-account-api",
+     "quote": "The Coda API is a RESTful API that lets you programmatically interact with Coda docs:"
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://github.com/orellazri/coda-mcp",
+     "quote": "Your Coda API key. You can generate one from your Coda account settings."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://github.com/orellazri/coda-mcp",
+     "quote": "Your Coda API key. You can generate one from your Coda account settings."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://github.com/orellazri/coda-mcp",
+     "quote": "This MCP server is not developed or maintained by Coda; it's a community-built project."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://github.com/orellazri/coda-mcp",
+     "quote": "Your Coda API key. You can generate one from your Coda account settings."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 78,
+  "app": "Coda",
+  "category": "Productivity and Project Management",
+  "flags": [],
+  "pass2_diff": [],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:54:30Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "oauth2",
+   "api_key",
+   "basic"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "official",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "Stripe is a financial infrastructure and payments platform providing APIs for payments, billing, subscriptions, refunds, and money movement.",
+  "existing_mcp_url": "https://mcp.stripe.com",
+  "api_pricing_tier": "free",
+  "confidence": 0.8429,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://docs.stripe.com/api/authentication",
+     "quote": "A sample test API key is included in all the examples here, so you can test any example right away."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://www.scalekit.com/blog/stripe-mcp-vs-api",
+     "quote": "It covers the full platform: the v1 record surface, the v2 APIs, webhooks and thin events, Connect, and high-throughput endpoints like the Meter Event Stream."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://docs.stripe.com/api",
+     "quote": "The Stripe API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer)."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://docs.stripe.com/api/authentication",
+     "quote": "The Stripe API authenticates requests using HTTP Basic Auth. Provide your API key as the basic auth username value. You don't need to provide a password."
+    },
+    {
+     "url": "https://docs.stripe.com/api/authentication",
+     "quote": "The Stripe API uses [API keys](/keys) to authenticate requests."
+    },
+    {
+     "url": "https://docs.stripe.com/stripe-apps/api-authentication",
+     "quote": "Use industry standard OAuth 2.0 to generate access tokens to interact with the Stripe API."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://docs.stripe.com/api/authentication",
+     "quote": "A sample test API key is included in all the examples here, so you can test any example right away."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://www.scalekit.com/blog/stripe-mcp-vs-api",
+     "quote": "The Stripe MCP server is Stripe's official, hosted endpoint at `https://mcp.stripe.com`, with a local server also available as the `@stripe/mcp` package."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://docs.stripe.com/api/authentication",
+     "quote": "A sample test API key is included in all the examples here, so you can test any example right away."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 81,
+  "app": "Stripe",
+  "category": "Finance and Fintech",
+  "flags": [
+   "cross_model_disagree"
+  ],
+  "pass2_diff": [
+   {
+    "field": "auth_methods",
+    "before": [
+     "api_key",
+     "oauth2"
+    ],
+    "after": [
+     "api_key",
+     "basic",
+     "oauth2"
+    ],
+    "resolved_by": "judge",
+    "reason": "The API uses HTTP Basic Auth (key as username) and API keys from the dashboard as the primary auth mechanisms, with OAuth 2.0 also supported for Stripe Apps; the bearer header variant of the API key i"
+   }
+  ],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:57:23Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "api_key"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "other"
+  ],
+  "api_breadth": "narrow",
+  "existing_mcp": "third_party",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "iPayX Protocol is the neutral FX verification layer for fintech sales teams and FX brokers.",
+  "existing_mcp_url": "https://mcp.so/servers/mcp-fx-audit-ipayx-stellar",
+  "api_pricing_tier": "unknown",
+  "confidence": 0.7286,
+  "evidence": {
+   "existing_mcp": [
+    {
+     "url": "https://mcp.so/servers/mcp-fx-audit-ipayx-stellar",
+     "quote": "Ipayx Fx Audit is an MCP server that audits foreign exchange (FX) fees, compares currency conversion margins across providers, and scores cross-border payment invoices."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://mcp.so/servers/mcp-fx-audit-ipayx-stellar",
+     "quote": "Install the server via `npx -y @ipayx/mcp-fx-audit` and configure it in your MCP client (e.g., Claude Desktop) with an optional `IPAYX_API_KEY` environment variable for live provider quotes."
+    }
+   ],
+   "access_model": [
+    {
+     "url": "https://mcp.so/servers/mcp-fx-audit-ipayx-stellar",
+     "quote": "A free API key from ipayx.ai is required for live provider comparisons."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://mcp.so/servers/mcp-fx-audit-ipayx-stellar",
+     "quote": "Ipayx Fx Audit is an MCP server that audits foreign exchange (FX) fees, compares currency conversion margins across providers, and scores cross-border payment invoices."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://mcp.so/servers/mcp-fx-audit-ipayx-stellar",
+     "quote": "It provides four tools: `audit_fx_fee`, `compare_providers`, `score_invoice`, and `get_mid_market_rate`."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://mcp.so/servers/mcp-fx-audit-ipayx-stellar",
+     "quote": "A free API key from ipayx.ai is required for live provider comparisons."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://mcp.so/servers/mcp-fx-audit-ipayx-stellar",
+     "quote": "A free API key from ipayx.ai is required for live provider comparisons."
+    }
+   ]
+  },
+  "unknown_reason": {
+   "api_pricing_tier": "no_docs_found"
+  },
+  "id": 85,
+  "app": "iPayX",
+  "category": "Finance and Fintech",
+  "flags": [
+   "cross_model_disagree"
+  ],
+  "pass2_diff": [
+   {
+    "field": "auth_methods",
+    "before": "unknown",
+    "after": [
+     "api_key"
+    ],
+    "resolved_by": "judge",
+    "reason": "A static API key obtained from ipayx.ai is passed as an environment variable on each request, matching the api_key definition."
+   },
+   {
+    "field": "access_model",
+    "before": "unknown",
+    "after": "self_serve_free",
+    "resolved_by": "judge",
+    "reason": "The key is free and obtained directly from ipayx.ai with no approval or paid plan required."
+   },
+   {
+    "field": "api_type",
+    "before": "unknown",
+    "after": [
+     "other"
+    ],
+    "resolved_by": "judge",
+    "reason": "The interface is MCP (Model Context Protocol), which is not REST, GraphQL, or SOAP, so it falls under 'other'."
+   },
+   {
+    "field": "api_breadth",
+    "before": "unknown",
+    "after": "narrow",
+    "resolved_by": "judge",
+    "reason": "Four tools covering a single-purpose FX auditing function is well within the narrow threshold of fewer than ~15 endpoints."
+   },
+   {
+    "field": "verdict",
+    "before": "unknown",
+    "after": "buildable_now",
+    "resolved_by": "judge",
+    "reason": "Public MCP server with a free self-serve key satisfies the buildable_now criteria."
+   },
+   {
+    "field": "blocker",
+    "before": "unknown",
+    "after": "none",
+    "resolved_by": "judge",
+    "reason": "No blocker exists; free self-serve credentials are available and the server is publicly installable."
+   }
+  ],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T16:55:54Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "none"
+  ],
+  "access_model": "unknown",
+  "api_type": [
+   "none_public"
+  ],
+  "api_breadth": "unknown",
+  "existing_mcp": "third_party",
+  "verdict": "blocked",
+  "blocker": "no_public_api",
+  "description": "Command line tool for the Mermaid library to generate SVG/PNG/PDF files; third-party MCP server wrappers exist.",
+  "existing_mcp_url": "https://github.com/andrewginns/mermaid-mcp-server",
+  "api_pricing_tier": "unknown",
+  "confidence": 0.7,
+  "evidence": {
+   "api_type": [
+    {
+     "url": "https://github.com/mermaid-js/mermaid-cli",
+     "quote": "This is a command-line interface (CLI) for mermaid. It takes a mermaid definition file as input and generates an SVG/PNG/PDF file as output."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://github.com/mermaid-js/mermaid-cli",
+     "quote": "This is a command-line interface (CLI) for mermaid. It takes a mermaid definition file as input and generates an SVG/PNG/PDF file as output."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://github.com/mermaid-js/mermaid-cli",
+     "quote": "This is a command-line interface (CLI) for mermaid. It takes a mermaid definition file as input and generates an SVG/PNG/PDF file as output."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://github.com/andrewginns/mermaid-mcp-server",
+     "quote": "Python MCP server for validating Mermaid diagrams and (optionally) rendering them as PNG images. It uses the Mermaid CLI tool to perform the validation and rendering."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://github.com/mermaid-js/mermaid-cli",
+     "quote": "This is a command-line interface (CLI) for mermaid. It takes a mermaid definition file as input and generates an SVG/PNG/PDF file as output."
+    }
+   ]
+  },
+  "unknown_reason": {
+   "access_model": "no_docs_found",
+   "api_breadth": "no_docs_found",
+   "api_pricing_tier": "no_docs_found"
+  },
+  "id": 98,
+  "app": "Mermaid CLI",
+  "category": "AI, Research and Media-native",
+  "flags": [
+   "needs_human"
+  ],
+  "pass2_diff": [],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T17:02:03Z"
+  }
+ },
+ {
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "existing_mcp": "official",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "Grain is a service that records and transcribes meetings, providing AI meeting notes, summaries, and conversation intelligence.",
+  "existing_mcp_url": "https://api.grain.com/_/mcp",
+  "api_pricing_tier": "free",
+  "confidence": 0.8429,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://support.grain.com/en/articles/15507288-grain-api",
+     "quote": "Not for personal API access, which is available on every plan, including Free."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://support.grain.com/en/articles/15507288-grain-api",
+     "quote": "The Grain API lets developers read meeting data, manage recordings, and receive real-time events from Grain programmatically."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://developers.grain.com",
+     "quote": "curl -X GET -H\"Authorization: Bearer grain_pat_example123\" -H\"Public-Api-Version: 2026-10-01\"https://api.grain.com/_/public-api/v2/token-info"
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://developers.grain.com/authentication.html",
+     "quote": "Personal Access Token (`PAT`) `personal` Generated manually from the integrations page. Doesn't expire, and can be revoked at any time."
+    },
+    {
+     "url": "https://developers.grain.com/authentication.html",
+     "quote": "The API supports a standard OAuth2 Authorization Code flow, including the PKCE extension for client-side only authentication."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://support.grain.com/en/articles/15507288-grain-api",
+     "quote": "Not for personal API access, which is available on every plan, including Free."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://developers.grain.com/authentication.html",
+     "quote": "Tokens with the `personal` scope, including Personal Access Tokens, also authenticate the Grain MCP server at `https://api.grain.com/_/mcp`."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://support.grain.com/en/articles/15507288-grain-api",
+     "quote": "Connect Grain to your own tools and workflows with the Grain public API."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 100,
+  "app": "Grain",
+  "category": "AI, Research and Media-native",
+  "flags": [
+   "cross_model_disagree"
+  ],
+  "pass2_diff": [],
+  "meta": {
+   "pass": 2,
+   "run_id": "20261123T164401Z-9a2271",
+   "model": "gemini-3.8-flash-medium | verify gpt-oss-120b-medium | judge claude-sonnet-4-6",
+   "prompt_version": "p1-fc744a+j-00615b+r-834721",
+   "updated_at": "2026-11-23T17:01:22Z"
+  }
+ }
+]

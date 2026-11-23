@@ -334,7 +334,7 @@ footer{max-width:1120px;margin:0 auto;padding:28px 24px 56px;color:var(--faint);
   <div class="human">
     <h3>Where a human was needed</h3>
     <ul>
-      {% if v.labeller_is_human or not v.labeller %}<li>Labelling the {{ v.n_labelled or v.n_sample }}-app sample blind, before seeing any agent output, to measure accuracy honestly.</li>
+      {% if v.labeller_is_human or not v.labeller %}<li>{% if v.pass1 %}Labelling {{ v.n_labelled or v.n_sample }} apps by hand from the vendors' docs to measure accuracy.{% else %}Labelling a sample by hand to measure accuracy; the form and scoring are built, but no labels were completed for this submission.{% endif %}</li>
       {% else %}<li>Spot-checking the reference verdicts that an independent AI agent produced for the {{ v.n_labelled or v.n_sample }}-app sample{% if v.spot_check %} ({{ v.spot_check.n }} apps, one per category){% endif %}; hand-labelling all {{ (v.n_labelled or v.n_sample) * 7 }} fields did not fit the time available.</li>{% endif %}
       {% if m.source == "pass2" %}<li>{{ v.needs_human|length }} app{{ '' if v.needs_human|length == 1 else 's' }} still flagged “needs human” after pass 2{% if v.needs_human %}: {{ v.needs_human|map(attribute='app')|join(', ') }}{% endif %}.</li>{% endif %}
       <li>Issuing API keys with the right permissions, reconciling spend with the provider, and approving every push.</li>
@@ -546,7 +546,7 @@ pytest -q                     # offline tests, no keys needed</pre>
     <li>Evidence comes from web search and plain page fetches. Documentation that only renders with JavaScript, sits behind a login or lives in PDFs is often missed; those fields show “unknown” with a reason.</li>
     <li>The second model reads the same pages as the first, so a retrieval miss can fool both. Only re-research gathers new evidence, and it is capped at five tool calls per app.</li>
     <li>“Buildable now” means a developer can obtain credentials alone today. It does not check rate limits, terms of service in depth, or approval timelines.</li>
-    <li>Labels are not fully blind (the labeller had seen earlier agent output for some apps).</li>
+    {% if v.pass1 %}<li>Labels are not fully blind (the labeller had seen earlier agent output for some apps).</li>{% endif %}
     <li>Antigravity CLI quota and latency limit how often the full run can be repeated.</li>
     {% if m.source != "pass2" %}<li>Pass 2 (second model, judge and targeted re-research) is built and tested, but it did not finish on all 100 apps within the submission window, so the per-app results on this page are from pass 1{% if v.pass2 %}; pass 2 accuracy is reported for the labelled sample only{% endif %}.</li>{% endif %}
     <li>The catalog check compares with Composio's current catalog, which may list only some of an app's methods.</li>

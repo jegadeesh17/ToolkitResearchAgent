@@ -14,6 +14,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Per-category random sample (`scripts/make_splits.py`) and an offline hand-labelling form (`verification/label.html`).
 
 ### Changed
-- Accuracy is measured against hand labels instead of AI-made reference labels.
+- Scoring is set up for hand labels instead of AI-made reference labels.
 - Auth-method definitions follow Composio's own wording.
 - The report leads with outreach tiers: ready to build, needs outreach, blocked.

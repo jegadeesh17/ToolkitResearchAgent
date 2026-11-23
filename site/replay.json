@@ -1,0 +1,414 @@
+{
+ "app_id": 3,
+ "app": "Pipedrive",
+ "queries": [
+  {
+   "query": "Pipedrive API documentation authentication pipedrive.com",
+   "hits": [
+    "https://openpublicapis.com/api/pipedrive-api",
+    "https://github.com/DavidRouyer/pipedrive-dotnet",
+    "https://developers.pipedrive.com/tutorials/create-a-deal-pipedrive-api"
+   ]
+  },
+  {
+   "query": "Pipedrive API pricing plans access free trial API key pipedrive.com",
+   "hits": [
+    "https://pipeline.zoominfo.com/sales/pipedrive-api",
+    "https://frontal.so/gtm-apis/crm-apis/pipedrive-api-review",
+    "https://www.onegtmlab.dev/tool-directory/crm/pipedrive"
+   ]
+  },
+  {
+   "query": "Pipedrive MCP server",
+   "hits": [
+    "https://mcp.so/servers/pipedrive-mcp-server",
+    "https://devcommunity.pipedrive.com/t/open-source-pipedrive-mcp-server-155-tools-v2-first-mit/20392",
+    "https://devcommunity.pipedrive.com/t/pipedrive-mcp-server/20195"
+   ]
+  },
+  {
+   "query": "Pipedrive API rate limits OpenAPI reference pipedrive.com",
+   "hits": [
+    "https://frontal.so/gtm-apis/crm-apis/pipedrive-api-review",
+    "https://pipedrive.readme.io/docs/core-api-concepts-rate-limiting",
+    "https://devcommunity.pipedrive.com/t/429-rate-limit-errors-causing-failed-contact-synchronization-via-pipedrive-api/20112"
+   ]
+  }
+ ],
+ "pages": [
+  {
+   "url": "https://developers.pipedrive.com/tutorials/create-a-deal-pipedrive-api",
+   "title": "",
+   "chars": 8024,
+   "error": null,
+   "sha256": "2bb2e536a48148a0b658c461fc8c75ce9a1eea02995752810b279f6b87677eff"
+  },
+  {
+   "url": "https://pipeline.zoominfo.com/sales/pipedrive-api",
+   "title": "",
+   "chars": 20000,
+   "error": null,
+   "sha256": "ed5b216baa4932abcece1d525599030743629636764404e57f4aaed4fd6e4c98"
+  },
+  {
+   "url": "https://devcommunity.pipedrive.com/t/open-source-pipedrive-mcp-server-155-tools-v2-first-mit/20392",
+   "title": "",
+   "chars": 1935,
+   "error": null,
+   "sha256": "db84f29e178b2904076a740b8d6a2f45eccc4278feb38e5868b1a4c92cdf26f1"
+  },
+  {
+   "url": "https://devcommunity.pipedrive.com/t/429-rate-limit-errors-causing-failed-contact-synchronization-via-pipedrive-api/20112",
+   "title": "",
+   "chars": 11501,
+   "error": null,
+   "sha256": "e8af15fd82ccea78e17246beb58459a77f48c97ba39dba452a0d98a25fd0dc88"
+  },
+  {
+   "url": "https://devcommunity.pipedrive.com/t/pipedrive-mcp-server/20195",
+   "title": "",
+   "chars": 5690,
+   "error": null,
+   "sha256": "92a111feeaac3d1e8a0b898c5a53ce66c8efcaa1f38483481c3e1066151a8433"
+  },
+  {
+   "url": "https://openpublicapis.com/api/pipedrive-api",
+   "title": "",
+   "chars": 4598,
+   "error": null,
+   "sha256": "06759eb4ebbe312d4c296ed594d2cd5d718023642f899a323e509a478a23982a"
+  }
+ ],
+ "calls": [
+  {
+   "ts": "2026-11-23T15:04:07Z",
+   "kind": "tool",
+   "stage": "pass1",
+   "tool": "COMPOSIO_SEARCH_WEB",
+   "model": null,
+   "url": "Pipedrive API documentation authentication pipedrive.com",
+   "status": "ok",
+   "latency_ms": 6202,
+   "tokens_in": null,
+   "tokens_out": null,
+   "cost_usd": 0.0,
+   "schema_valid": null,
+   "error": null
+  },
+  {
+   "ts": "2026-11-23T15:04:07Z",
+   "kind": "tool",
+   "stage": "pass1",
+   "tool": "COMPOSIO_SEARCH_WEB",
+   "model": null,
+   "url": "Pipedrive API pricing plans access free trial API key pipedrive.com",
+   "status": "ok",
+   "latency_ms": 6280,
+   "tokens_in": null,
+   "tokens_out": null,
+   "cost_usd": 0.0,
+   "schema_valid": null,
+   "error": null
+  },
+  {
+   "ts": "2026-11-23T15:04:08Z",
+   "kind": "tool",
+   "stage": "pass1",
+   "tool": "COMPOSIO_SEARCH_WEB",
+   "model": null,
+   "url": "Pipedrive MCP server",
+   "status": "ok",
+   "latency_ms": 7110,
+   "tokens_in": null,
+   "tokens_out": null,
+   "cost_usd": 0.0,
+   "schema_valid": null,
+   "error": null
+  },
+  {
+   "ts": "2026-11-23T15:04:09Z",
+   "kind": "tool",
+   "stage": "pass1",
+   "tool": "COMPOSIO_SEARCH_WEB",
+   "model": null,
+   "url": "Pipedrive API rate limits OpenAPI reference pipedrive.com",
+   "status": "ok",
+   "latency_ms": 7966,
+   "tokens_in": null,
+   "tokens_out": null,
+   "cost_usd": 0.0,
+   "schema_valid": null,
+   "error": null
+  },
+  {
+   "ts": "2026-11-23T15:04:20Z",
+   "kind": "tool",
+   "stage": "pass1",
+   "tool": "COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+   "model": null,
+   "url": "https://developers.pipedrive.com/tutorials/create-a-deal-pipedrive-api",
+   "status": "ok",
+   "latency_ms": 11007,
+   "tokens_in": null,
+   "tokens_out": null,
+   "cost_usd": 0.0,
+   "schema_valid": null,
+   "error": null
+  },
+  {
+   "ts": "2026-11-23T15:04:20Z",
+   "kind": "tool",
+   "stage": "pass1",
+   "tool": "COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+   "model": null,
+   "url": "https://pipeline.zoominfo.com/sales/pipedrive-api",
+   "status": "ok",
+   "latency_ms": 11784,
+   "tokens_in": null,
+   "tokens_out": null,
+   "cost_usd": 0.0,
+   "schema_valid": null,
+   "error": null
+  },
+  {
+   "ts": "2026-11-23T15:04:21Z",
+   "kind": "tool",
+   "stage": "pass1",
+   "tool": "COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+   "model": null,
+   "url": "https://devcommunity.pipedrive.com/t/429-rate-limit-errors-causing-failed-contact-synchronization-via-pipedrive-api/20112",
+   "status": "ok",
+   "latency_ms": 12294,
+   "tokens_in": null,
+   "tokens_out": null,
+   "cost_usd": 0.0,
+   "schema_valid": null,
+   "error": null
+  },
+  {
+   "ts": "2026-11-23T15:04:21Z",
+   "kind": "tool",
+   "stage": "pass1",
+   "tool": "COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+   "model": null,
+   "url": "https://devcommunity.pipedrive.com/t/open-source-pipedrive-mcp-server-155-tools-v2-first-mit/20392",
+   "status": "ok",
+   "latency_ms": 12425,
+   "tokens_in": null,
+   "tokens_out": null,
+   "cost_usd": 0.0,
+   "schema_valid": null,
+   "error": null
+  },
+  {
+   "ts": "2026-11-23T15:04:21Z",
+   "kind": "tool",
+   "stage": "pass1",
+   "tool": "COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+   "model": null,
+   "url": "https://devcommunity.pipedrive.com/t/pipedrive-mcp-server/20195",
+   "status": "ok",
+   "latency_ms": 12681,
+   "tokens_in": null,
+   "tokens_out": null,
+   "cost_usd": 0.0,
+   "schema_valid": null,
+   "error": null
+  },
+  {
+   "ts": "2026-11-23T15:04:22Z",
+   "kind": "tool",
+   "stage": "pass1",
+   "tool": "COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+   "model": null,
+   "url": "https://openpublicapis.com/api/pipedrive-api",
+   "status": "ok",
+   "latency_ms": 13091,
+   "tokens_in": null,
+   "tokens_out": null,
+   "cost_usd": 0.0,
+   "schema_valid": null,
+   "error": null
+  },
+  {
+   "ts": "2026-11-23T15:12:43Z",
+   "kind": "llm",
+   "stage": "pass1",
+   "tool": null,
+   "model": "gemini-3.8-flash-medium",
+   "url": null,
+   "status": "ok",
+   "latency_ms": 501305,
+   "tokens_in": 59374,
+   "tokens_out": 46019,
+   "cost_usd": 0.0,
+   "schema_valid": null,
+   "error": "attempt 1: print timeout after 5m0s with the turn still in progress; the response is partial"
+  },
+  {
+   "ts": "2026-11-23T15:12:43Z",
+   "kind": "llm_validation",
+   "stage": "pass1",
+   "tool": null,
+   "model": "gemini-3.8-flash-medium",
+   "url": null,
+   "status": null,
+   "latency_ms": null,
+   "tokens_in": null,
+   "tokens_out": null,
+   "cost_usd": null,
+   "schema_valid": true,
+   "error": null
+  }
+ ],
+ "pass1": {
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "third_party",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "Pipedrive is a sales CRM platform providing programmatic control over deals, contacts, organizations, leads, activities, and pipelines.",
+  "existing_mcp_url": "https://github.com/ckalima/pipedrive-mcp-server",
+  "api_pricing_tier": "paid_standard",
+  "confidence": 0.95,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://pipeline.zoominfo.com/sales/pipedrive-api",
+     "quote": "The 14-day free trial includes full API access with no credit card required, and the free developer sandbox is available indefinitely for building and testing integrations."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://pipeline.zoominfo.com/sales/pipedrive-api",
+     "quote": "The API covers the full breadth of Pipedrive's CRM data model. All resources follow standard REST patterns (GET, POST, PUT/PATCH, DELETE) and return paginated JSON."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://developers.pipedrive.com/tutorials/create-a-deal-pipedrive-api",
+     "quote": "Deals are one of the key entities in Pipedrive. You can use Pipedrive's REST API to create a deal programmatically."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://pipeline.zoominfo.com/sales/pipedrive-api",
+     "quote": "Pipedrivesupports two authentication methods: a personal API token and OAuth 2.0."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://pipeline.zoominfo.com/sales/pipedrive-api",
+     "quote": "The 14-day free trial includes full API access with no credit card required, and the free developer sandbox is available indefinitely for building and testing integrations."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://devcommunity.pipedrive.com/t/open-source-pipedrive-mcp-server-155-tools-v2-first-mit/20392",
+     "quote": "I originally built this [MCP server for Pipedrive](https://github.com/ckalima/pipedrive-mcp-server) for a client who wanted to enable Claude workflows instead of clicking through the UI all day."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://pipeline.zoominfo.com/sales/pipedrive-api",
+     "quote": "The 14-day free trial includes full API access with no credit card required, and the free developer sandbox is available indefinitely for building and testing integrations."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 3,
+  "app": "Pipedrive",
+  "category": "CRM and Sales",
+  "flags": [],
+  "pass2_diff": null,
+  "meta": {
+   "pass": 1,
+   "run_id": "20261123T150401Z-6d9a7f",
+   "model": "gemini-3.8-flash-medium",
+   "prompt_version": "p1-fc744a",
+   "updated_at": "2026-11-23T15:12:43Z"
+  }
+ },
+ "final": {
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "access_model": "self_serve_free",
+  "api_type": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "existing_mcp": "third_party",
+  "verdict": "buildable_now",
+  "blocker": "none",
+  "description": "Pipedrive is a sales CRM platform providing programmatic control over deals, contacts, organizations, leads, activities, and pipelines.",
+  "existing_mcp_url": "https://github.com/ckalima/pipedrive-mcp-server",
+  "api_pricing_tier": "paid_standard",
+  "confidence": 0.95,
+  "evidence": {
+   "access_model": [
+    {
+     "url": "https://pipeline.zoominfo.com/sales/pipedrive-api",
+     "quote": "The 14-day free trial includes full API access with no credit card required, and the free developer sandbox is available indefinitely for building and testing integrations."
+    }
+   ],
+   "api_breadth": [
+    {
+     "url": "https://pipeline.zoominfo.com/sales/pipedrive-api",
+     "quote": "The API covers the full breadth of Pipedrive's CRM data model. All resources follow standard REST patterns (GET, POST, PUT/PATCH, DELETE) and return paginated JSON."
+    }
+   ],
+   "api_type": [
+    {
+     "url": "https://developers.pipedrive.com/tutorials/create-a-deal-pipedrive-api",
+     "quote": "Deals are one of the key entities in Pipedrive. You can use Pipedrive's REST API to create a deal programmatically."
+    }
+   ],
+   "auth_methods": [
+    {
+     "url": "https://pipeline.zoominfo.com/sales/pipedrive-api",
+     "quote": "Pipedrivesupports two authentication methods: a personal API token and OAuth 2.0."
+    }
+   ],
+   "blocker": [
+    {
+     "url": "https://pipeline.zoominfo.com/sales/pipedrive-api",
+     "quote": "The 14-day free trial includes full API access with no credit card required, and the free developer sandbox is available indefinitely for building and testing integrations."
+    }
+   ],
+   "existing_mcp": [
+    {
+     "url": "https://devcommunity.pipedrive.com/t/open-source-pipedrive-mcp-server-155-tools-v2-first-mit/20392",
+     "quote": "I originally built this [MCP server for Pipedrive](https://github.com/ckalima/pipedrive-mcp-server) for a client who wanted to enable Claude workflows instead of clicking through the UI all day."
+    }
+   ],
+   "verdict": [
+    {
+     "url": "https://pipeline.zoominfo.com/sales/pipedrive-api",
+     "quote": "The 14-day free trial includes full API access with no credit card required, and the free developer sandbox is available indefinitely for building and testing integrations."
+    }
+   ]
+  },
+  "unknown_reason": {},
+  "id": 3,
+  "app": "Pipedrive",
+  "category": "CRM and Sales",
+  "flags": [],
+  "pass2_diff": null,
+  "meta": {
+   "pass": 1,
+   "run_id": "20261123T150401Z-6d9a7f",
+   "model": "gemini-3.8-flash-medium",
+   "prompt_version": "p1-fc744a",
+   "updated_at": "2026-11-23T15:12:43Z"
+  }
+ }
+}

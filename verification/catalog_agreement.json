@@ -1,0 +1,202 @@
+{
+  "pass1": {
+    "n": 59,
+    "covers_all": 53,
+    "overlaps": 57,
+    "covers_all_rate": 0.8983,
+    "ci_low": 0.7954,
+    "ci_high": 0.9526,
+    "disagreements": [
+      {
+        "id": 28,
+        "app": "WhatsApp Business",
+        "slug": "whatsapp",
+        "composio": [
+          "api_key",
+          "oauth2"
+        ],
+        "agent": [
+          "other"
+        ],
+        "covers_all": false,
+        "overlaps": false
+      },
+      {
+        "id": 32,
+        "app": "Meta Ads",
+        "slug": "metaads",
+        "composio": [
+          "api_key",
+          "oauth2"
+        ],
+        "agent": [
+          "oauth2"
+        ],
+        "covers_all": false,
+        "overlaps": true
+      },
+      {
+        "id": 62,
+        "app": "Vercel",
+        "slug": "vercel",
+        "composio": [
+          "api_key",
+          "oauth2"
+        ],
+        "agent": [
+          "api_key"
+        ],
+        "covers_all": false,
+        "overlaps": true
+      },
+      {
+        "id": 66,
+        "app": "Neo4j",
+        "slug": "neo4j",
+        "composio": [
+          "api_key",
+          "basic",
+          "oauth2"
+        ],
+        "agent": [
+          "oauth2",
+          "basic",
+          "bearer_token"
+        ],
+        "covers_all": false,
+        "overlaps": true
+      },
+      {
+        "id": 69,
+        "app": "Datadog",
+        "slug": "datadog",
+        "composio": [
+          "api_key",
+          "bearer_token",
+          "oauth2"
+        ],
+        "agent": [
+          "api_key"
+        ],
+        "covers_all": false,
+        "overlaps": true
+      },
+      {
+        "id": 99,
+        "app": "YouTube Transcript",
+        "slug": "youtube_transcript",
+        "composio": [
+          "api_key"
+        ],
+        "agent": [
+          "none"
+        ],
+        "covers_all": false,
+        "overlaps": false
+      }
+    ]
+  },
+  "pass2": {
+    "n": 59,
+    "covers_all": 53,
+    "overlaps": 57,
+    "covers_all_rate": 0.8983,
+    "ci_low": 0.7954,
+    "ci_high": 0.9526,
+    "disagreements": [
+      {
+        "id": 28,
+        "app": "WhatsApp Business",
+        "slug": "whatsapp",
+        "composio": [
+          "api_key",
+          "oauth2"
+        ],
+        "agent": [
+          "other"
+        ],
+        "covers_all": false,
+        "overlaps": false
+      },
+      {
+        "id": 32,
+        "app": "Meta Ads",
+        "slug": "metaads",
+        "composio": [
+          "api_key",
+          "oauth2"
+        ],
+        "agent": [
+          "oauth2"
+        ],
+        "covers_all": false,
+        "overlaps": true
+      },
+      {
+        "id": 62,
+        "app": "Vercel",
+        "slug": "vercel",
+        "composio": [
+          "api_key",
+          "oauth2"
+        ],
+        "agent": [
+          "api_key"
+        ],
+        "covers_all": false,
+        "overlaps": true
+      },
+      {
+        "id": 66,
+        "app": "Neo4j",
+        "slug": "neo4j",
+        "composio": [
+          "api_key",
+          "basic",
+          "oauth2"
+        ],
+        "agent": [
+          "oauth2",
+          "basic",
+          "bearer_token"
+        ],
+        "covers_all": false,
+        "overlaps": true
+      },
+      {
+        "id": 69,
+        "app": "Datadog",
+        "slug": "datadog",
+        "composio": [
+          "api_key",
+          "bearer_token",
+          "oauth2"
+        ],
+        "agent": [
+          "api_key"
+        ],
+        "covers_all": false,
+        "overlaps": true
+      },
+      {
+        "id": 99,
+        "app": "YouTube Transcript",
+        "slug": "youtube_transcript",
+        "composio": [
+          "api_key"
+        ],
+        "agent": [
+          "none"
+        ],
+        "covers_all": false,
+        "overlaps": false
+      }
+    ]
+  },
+  "catalog_meta": {
+    "source_url": "https://raw.githubusercontent.com/ComposioHQ/composio/main/docs/public/data/toolkits.json",
+    "fetched_at": "2026-11-23T15:10:34.565016+00:00",
+    "sha256": "ca63b677c22d8dd9b444fcf543687535f48d3324cfec69cc19e6d73dff26c978",
+    "toolkit_count": 1519
+  }
+}

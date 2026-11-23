@@ -174,10 +174,10 @@ def test_human_needed_box_matches_who_labelled(rows):
     spot = {"seed": 7, "checks": [{"judgement": "correct"}] * 10}
     agent_html = render_html(build_results(rows, rows, "pass2", {}, [], splits, None, "agent:gemini-cli (x)", spot))
     box = agent_html[agent_html.index("Where a human was needed"):agent_html.index('class="stats"')]
-    assert "Labelling the 30-app sample blind" not in box and "Spot-checking" in box
+    assert "Labelling a sample by hand to measure accuracy" not in box and "Spot-checking" in box
     human_html = render_html(build_results(rows, rows, "pass2", {}, [], splits, None, "human", None))
     box = human_html[human_html.index("Where a human was needed"):human_html.index('class="stats"')]
-    assert "Labelling the 30-app sample blind" in box
+    assert "Labelling a sample by hand to measure accuracy" in box
 
 
 def test_takeaways_are_plainly_stated_up_top_and_on_cards(results):

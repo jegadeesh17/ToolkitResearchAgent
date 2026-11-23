@@ -2,7 +2,9 @@
 
 Which of 100 SaaS apps could become an AI-agent toolkit today? This repository implements an autonomous research agent that analyzes each app's official developer documentation, extracts authentication schemes, developer onboarding pathways, API breadths, and build blockers — with verbatim quote citations for every answer — verifies predictions across multi-model consensus and bounded re-research loops, and cross-checks accuracy against hand-checked human ground truth with Wilson confidence intervals, as well as Composio's real-world catalog of 1,519+ toolkits.
 
-Builds on my September 2026 attempt at this brief ([ToolkitBuildabilityResearch](https://github.com/jegadeesh17/ToolkitBuildabilityResearch)); the accuracy method was redone with hand-checked labels.
+Builds on my September 2026 attempt at this brief ([ToolkitBuildabilityResearch](https://github.com/jegadeesh17/ToolkitBuildabilityResearch)); this version adds stricter evidence rules, a check against Composio's own catalog and Wilson confidence intervals.
+
+**Results in this submission:** pass 1 covers all 100 apps. Pass 2 (second model, judge, re-research) is built and tested but was stopped after 19 apps to meet the deadline, so the published results are pass 1. Accuracy against hand labels was not measured: the labelling form and scoring code are included (`verification/label.html`, `agent/score.py`), but no labels were completed in time.
 
 The full findings are published as a standalone interactive case study in `site/index.html` and reproducible data in `site/results.json`.
 
@@ -121,7 +123,7 @@ Settings are managed via environment variables or `.env` (`.env` is strictly git
 
 ## Known Limitations & Tradeoffs
 
-1. **Labels & Ground Truth:** Ground truth labels were verified by hand against official documentation. Because the labeller had seen earlier agent output for some apps, labels are not fully blind.
+1. **No measured accuracy:** no hand labels were completed in the submission window, so the report gives no accuracy figure. The evidence offered instead is the verbatim-quote check on every answer and agreement with Composio's own catalog (53 of 59 catalogued apps).
 2. **Catalog Agreement Scope:** Composio's toolkit catalog represents integrations currently supported by Composio (often a focused subset of an app's total public API), so catalog agreement serves as a consistency check rather than absolute ground truth.
 3. **Execution Limits & Throughput:** Antigravity CLI local concurrency and rate limits bound how frequently the full 100-app pipeline can be re-run from scratch.
 4. **Retrieval Blindspots:** Documentation gated behind enterprise logins, single-page client-rendered JavaScript apps without static mirrors, or downloadable PDF manuals can result in `unknown` fields.
@@ -144,7 +146,7 @@ tests/           Comprehensive offline unit and contract test suites
 
 ## How This Was Built
 
-Designed and built by jegadeesh17 with [SoftwareEngineeringAgents](https://github.com/jegadeesh17/SoftwareEngineeringAgents), a multi-agent workflow for Claude Code and Antigravity. All architecture calls, ground truth verifications, and test executions were conducted and verified directly.
+Designed and built by jegadeesh17 with [SoftwareEngineeringAgents](https://github.com/jegadeesh17/SoftwareEngineeringAgents), a multi-agent workflow for Claude Code and Antigravity. All architecture calls and test runs were made and checked by the project owner.
 
 ---
 
